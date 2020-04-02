@@ -1,11 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CF23D868-1210-4673-9A28-ECE975465CAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkdownBuilder", "src\MarkdownBuilder\MarkdownBuilder.csproj", "{A1756851-FDE5-4E55-B7DC-43F0AFA5D021}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkdownBuilder", "src\MarkdownBuilder\MarkdownBuilder.csproj", "{A1756851-FDE5-4E55-B7DC-43F0AFA5D021}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA6B119D-5A29-4DC2-98DE-3EDBF77BDD8C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		azure-pipelines.yml = azure-pipelines.yml
+		GitVersion.yml = GitVersion.yml
+		LICENSE = LICENSE
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{11051361-88E1-4038-B802-C5AC81C709A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkdownBuiler.UnitTests", "tests\MarkdownBuiler.UnitTests\MarkdownBuiler.UnitTests.csproj", "{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +28,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A1756851-FDE5-4E55-B7DC-43F0AFA5D021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -32,8 +42,27 @@ Global
 		{A1756851-FDE5-4E55-B7DC-43F0AFA5D021}.Release|x64.Build.0 = Release|Any CPU
 		{A1756851-FDE5-4E55-B7DC-43F0AFA5D021}.Release|x86.ActiveCfg = Release|Any CPU
 		{A1756851-FDE5-4E55-B7DC-43F0AFA5D021}.Release|x86.Build.0 = Release|Any CPU
+		{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}.Debug|x64.Build.0 = Debug|Any CPU
+		{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}.Debug|x86.Build.0 = Debug|Any CPU
+		{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}.Release|x64.ActiveCfg = Release|Any CPU
+		{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}.Release|x64.Build.0 = Release|Any CPU
+		{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}.Release|x86.ActiveCfg = Release|Any CPU
+		{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A1756851-FDE5-4E55-B7DC-43F0AFA5D021} = {CF23D868-1210-4673-9A28-ECE975465CAA}
+		{1A0F31C7-7C47-4A3C-9580-E6B1B926794C} = {11051361-88E1-4038-B802-C5AC81C709A0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1F8E18D-4B3A-4BDF-8EAB-2F9DFD0426CE}
 	EndGlobalSection
 EndGlobal
