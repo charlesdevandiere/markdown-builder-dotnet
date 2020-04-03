@@ -16,10 +16,7 @@ namespace Markdown
         /// <value>The title level.</value>
         public int Level
         {
-            get
-            {
-                return this.level;
-            }
+            get => this.level;
             set
             {
                 Guard.Argument(value, nameof(value))

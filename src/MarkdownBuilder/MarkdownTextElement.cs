@@ -30,7 +30,7 @@ namespace Markdown
 
                 return this.text;
             }
-            protected set { this.text = value; }
+            protected set => this.text = value;
         }
 
         /// <summary>

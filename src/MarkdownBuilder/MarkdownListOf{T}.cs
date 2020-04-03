@@ -94,7 +94,7 @@ namespace Markdown
             Guard.Argument(level, nameof(level))
                 .GreaterThan(0);
 
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             for (int i = 0; i < this.ListItems.Count; i++)
             {
                 switch (this.ListItems[i])

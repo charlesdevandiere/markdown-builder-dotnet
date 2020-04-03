@@ -27,6 +27,6 @@ namespace Markdown
         /// </summary>
         /// <param name="char">The bullet point character.</param>
         /// <param name="listItems">The list items.</param>
-        public MarkdownList(char @char, params MarkdownListItem[] listItems) : base(listItems) { }
+        public MarkdownList(char @char, params MarkdownListItem[] listItems) : base(@char, listItems) { }
     }
 }
