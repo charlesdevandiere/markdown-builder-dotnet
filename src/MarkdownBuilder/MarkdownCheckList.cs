@@ -3,7 +3,7 @@ namespace Markdown
     /// <summary>
     /// Markdown check list.
     /// </summary>
-    public class MarkdownCheckList : MarkdownList<MarkdownCheckListItem>
+    public class MarkdownCheckList : MarkdownList<MarkdownCheckListItem>, IMarkdownBlockElement
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownCheckList" /> class.

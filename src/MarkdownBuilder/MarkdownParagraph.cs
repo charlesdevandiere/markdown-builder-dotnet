@@ -5,7 +5,7 @@ namespace Markdown
     /// <summary>
     /// Markdown paragraph.
     /// </summary>
-    public class MarkdownParagraph : MarkdownTextElement
+    public class MarkdownParagraph : MarkdownTextElement, IMarkdownBlockElement
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownParagraph" /> class.
@@ -26,7 +26,7 @@ namespace Markdown
         /// <returns>A string that represents the current markdown paragraph.</returns>
         public override string ToString()
         {
-            return string.Concat(this.Text.Trim(), Environment.NewLine, Environment.NewLine);
+            return string.Concat(this.Text.Trim(), Environment.NewLine);
         }
     }
 }

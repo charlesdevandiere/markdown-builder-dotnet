@@ -49,7 +49,7 @@ namespace Markdown
             headerTexts = string.Concat(headerTexts, "|");
             columnAlignments = string.Concat(columnAlignments, "|");
 
-            return string.Concat(headerTexts, Environment.NewLine, columnAlignments, Environment.NewLine);
+            return string.Concat(headerTexts, Environment.NewLine, columnAlignments);
         }
     }
 }

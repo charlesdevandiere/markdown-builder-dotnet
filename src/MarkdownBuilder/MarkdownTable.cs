@@ -9,7 +9,7 @@ namespace Markdown
     /// <summary>
     /// Markdown table.
     /// </summary>
-    public class MarkdownTable
+    public class MarkdownTable : IMarkdownBlockElement
     {
         /// <summary>Gets the header.</summary>
         /// <value>The header.</value>
@@ -98,8 +98,6 @@ namespace Markdown
                 this.CheckRow(row);
                 sb.AppendLine(row.ToString());
             }
-
-            sb.AppendLine();
 
             return sb.ToString();
         }

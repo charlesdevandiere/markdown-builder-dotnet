@@ -9,7 +9,7 @@ namespace Markdown
     /// Markdown list of T
     /// </summary>
     /// <typeparam name="T">The list items type.</typeparam>
-    public abstract class MarkdownList<T> : MarkdownListItem where T : MarkdownListItem
+    public abstract class MarkdownList<T> : IMarkdownListItem, IMarkdownBlockElement where T : IMarkdownListItem
     {
         /// <summary>
         /// Gets or sets the list items.
@@ -17,10 +17,10 @@ namespace Markdown
         /// <value>List items.</value>
         protected List<T> ListItems { get; set; }
 
-        private readonly char Char = '-';
+        private readonly char Char;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
+        /// Initializes a new instance of the <see cref="MarkdownList{T}" /> class.
         /// </summary>
         public MarkdownList()
         {
@@ -28,7 +28,7 @@ namespace Markdown
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
+        /// Initializes a new instance of the <see cref="MarkdownList{T}" /> class.
         /// </summary>
         /// <param name="char">The bullet point character.</param>
         public MarkdownList(char @char) : this()
@@ -37,25 +37,27 @@ namespace Markdown
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
+        /// Initializes a new instance of the <see cref="MarkdownList{T}" /> class.
         /// </summary>
         /// <param name="listItems">The list items.</param>
         public MarkdownList(params T[] listItems)
         {
             this.ListItems = new List<T>(listItems);
+            this.Char = '-';
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
+        /// Initializes a new instance of the <see cref="MarkdownList{T}" /> class.
         /// </summary>
         /// <param name="listItems">The list items.</param>
         public MarkdownList(IEnumerable<T> listItems)
         {
             this.ListItems = new List<T>(listItems);
+            this.Char = '-';
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
+        /// Initializes a new instance of the <see cref="MarkdownList{T}" /> class.
         /// </summary>
         /// <param name="char">The bullet point character.</param>
         /// <param name="listItems">The list items.</param>
@@ -65,7 +67,7 @@ namespace Markdown
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
+        /// Initializes a new instance of the <see cref="MarkdownList{T}" /> class.
         /// </summary>
         /// <param name="char">The bullet point character.</param>
         /// <param name="listItems">The list items.</param>
@@ -75,18 +77,18 @@ namespace Markdown
         }
 
         /// <summary>
-        /// Adds a item to the end of the <see cref="MarkdownList" />.
+        /// Adds a item to the end of the <see cref="MarkdownList{T}" />.
         /// </summary>
-        /// <param name="listItem">The list item to be added to the end of the <see cref="MarkdownList" />.</param>
+        /// <param name="listItem">The list item to be added to the end of the <see cref="MarkdownList{T}" />.</param>
         public void Add(T listItem)
         {
             this.ListItems.Add(listItem);
         }
 
         /// <summary>
-        /// Adds the items of the specified collection to the end of the <see cref="MarkdownList" />.
+        /// Adds the items of the specified collection to the end of the <see cref="MarkdownList{T}" />.
         /// </summary>
-        /// <param name="listItems">The item collection to be added to the end of the <see cref="MarkdownList" />.</param>
+        /// <param name="listItems">The item collection to be added to the end of the <see cref="MarkdownList{T}" />.</param>
         public void AddRange(IEnumerable<T> listItems)
         {
             this.ListItems.AddRange(listItems);
@@ -98,7 +100,7 @@ namespace Markdown
         /// <returns>A string that represents the current markdown list.</returns>
         public override string ToString()
         {
-            return string.Concat(this.Print(0), Environment.NewLine);
+            return string.Concat(this.Print(0));
         }
 
         /// <summary>
@@ -111,7 +113,7 @@ namespace Markdown
         private string Print(int level)
         {
             Guard.Argument(level, nameof(level))
-                .GreaterThan(0);
+                .GreaterThan(-1);
 
             var sb = new StringBuilder();
             for (int i = 0; i < this.ListItems.Count; i++)
@@ -125,7 +127,7 @@ namespace Markdown
                         sb.AppendLine(textListItem.ToString());
                         break;
 
-                    case MarkdownList list:
+                    case MarkdownTextList list:
                         sb.AppendLine(list.Print(level + 2));
                         break;
 

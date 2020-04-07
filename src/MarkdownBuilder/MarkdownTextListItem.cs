@@ -3,7 +3,7 @@ namespace Markdown
     /// <summary>
     /// Markdown text list item.
     /// </summary>
-    public class MarkdownTextListItem : MarkdownTextElement, MarkdownListItem
+    public class MarkdownTextListItem : MarkdownTextElement, IMarkdownListItem
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownTextListItem" /> class.

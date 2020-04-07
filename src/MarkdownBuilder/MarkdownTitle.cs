@@ -6,7 +6,7 @@ namespace Markdown
     /// <summary>
     /// Markdown title.
     /// </summary>
-    public class MarkdownTitle : MarkdownTextElement
+    public class MarkdownTitle : MarkdownTextElement, IMarkdownBlockElement
     {
         private int level;
 
@@ -56,7 +56,6 @@ namespace Markdown
                 new string('#', this.Level),
                 " ",
                 this.Text.Trim(),
-                Environment.NewLine,
                 Environment.NewLine);
         }
     }

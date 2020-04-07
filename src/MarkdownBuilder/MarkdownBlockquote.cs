@@ -5,7 +5,7 @@ namespace Markdown
     /// <summary>
     /// Markdown blockqute.
     /// </summary>
-    public class MarkdownBlockquote : MarkdownTextElement
+    public class MarkdownBlockquote : MarkdownTextElement, IMarkdownBlockElement
     {
         /// <summary>
         /// Initializes a new instance of <see cref="MarkdownBlockquote" /> class.
@@ -26,7 +26,7 @@ namespace Markdown
         /// <returns>A string that represents the current markdown blockquote.</returns>
         public override string ToString()
         {
-            return string.Concat("> ", this.Text.Trim(), Environment.NewLine, Environment.NewLine);
+            return string.Concat("> ", this.Text.Trim(), Environment.NewLine);
         }
     }
 }

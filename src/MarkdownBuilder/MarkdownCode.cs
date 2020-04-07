@@ -5,7 +5,7 @@ namespace Markdown
     /// <summary>
     /// Markdown code.
     /// </summary>
-    public class MarkdownCode : MarkdownTextElement
+    public class MarkdownCode : MarkdownTextElement, IMarkdownBlockElement
     {
         /// <summary>
         /// Gets or sets the code language.
@@ -39,11 +39,10 @@ namespace Markdown
         /// <returns>A string that represents the current markdown code.</returns>
         public override string ToString()
         {
-            return string.Concat(
+            return string.Join(Environment.NewLine,
                 $"```{this.Language}",
-                Environment.NewLine,
-                this.Text, "```",
-                Environment.NewLine);
+                this.Text,
+                $"```{Environment.NewLine}");
         }
     }
 }

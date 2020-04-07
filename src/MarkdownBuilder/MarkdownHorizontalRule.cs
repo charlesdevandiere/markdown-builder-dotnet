@@ -6,7 +6,7 @@ namespace Markdown
     /// <summary>
     /// Markdown horizontal rule.
     /// </summary>
-    public class MarkdownHorizontalRule
+    public class MarkdownHorizontalRule : IMarkdownBlockElement
     {
         private char @char;
 
@@ -48,7 +48,7 @@ namespace Markdown
         /// <returns>A string that represents the current markdown horizontal rule.</returns>
         public override string ToString()
         {
-            return string.Concat(this.Char, this.Char, this.Char, Environment.NewLine, Environment.NewLine);
+            return string.Concat(this.Char, this.Char, this.Char, Environment.NewLine);
         }
     }
 }
