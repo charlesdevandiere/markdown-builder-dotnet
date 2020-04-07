@@ -1,18 +1,20 @@
-# Test
+# Document
 
-Description
+## Paragraph
+
+Text
 
 ## List
 
 - One
 - Tow
 
-## Ordered List
+## Ordered list
 
 1. One
 2. Tow
 
-## Ordered List
+## Check list
 
 - [x] One
 - [ ] Tow
@@ -51,3 +53,27 @@ Console.Write(document);
 ## Image
 
 ![GitHub](https://github.githubassets.com/apple-touch-icon-180x180.png)
+
+## Emoji
+
+:thumbsup:
+
+## Emphasis
+
+*Emphasis*
+
+## StrongEmphasis
+
+**Strong emphasis**
+
+## Strikethrough
+
+~~Strikethrough~~
+
+## Inline code
+
+`code`
+
+## Link
+
+[markdown-builder-dotnet](https://github.com/charlesdevandiere/markdown-builder-dotnet)

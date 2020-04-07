@@ -10,17 +10,28 @@ namespace MarkdownBuilder.Sample
         {
             IMarkdownDocument document = new MarkdownDocument();
 
-            document.Append(new MarkdownTitle("Test", 1));
-            document.Append(new MarkdownParagraph("Description"));
+            document.Append(new MarkdownTitle("Document", 1));
+
+            document.Append(new MarkdownTitle("Paragraph", 2));
+            document.Append(new MarkdownParagraph("Text"));
 
             document.Append(new MarkdownTitle("List", 2));
-            document.Append(new MarkdownTextList(new MarkdownTextListItem("One"), new MarkdownTextListItem("Tow")));
+            document.Append(
+                new MarkdownTextList(
+                    new MarkdownTextListItem("One"),
+                    new MarkdownTextListItem("Tow")));
 
-            document.Append(new MarkdownTitle("Ordered List", 2));
-            document.Append(new MarkdownOrderedList(new MarkdownTextListItem("One"), new MarkdownTextListItem("Tow")));
+            document.Append(new MarkdownTitle("Ordered list", 2));
+            document.Append(
+                new MarkdownOrderedList(
+                    new MarkdownTextListItem("One"),
+                    new MarkdownTextListItem("Tow")));
 
-            document.Append(new MarkdownTitle("Ordered List", 2));
-            document.Append(new MarkdownCheckList(new MarkdownCheckListItem(true, "One"), new MarkdownCheckListItem(false, "Tow")));
+            document.Append(new MarkdownTitle("Check list", 2));
+            document.Append(
+                new MarkdownCheckList(
+                    new MarkdownCheckListItem(true, "One"),
+                    new MarkdownCheckListItem(false, "Tow")));
 
             document.Append(new MarkdownTitle("Table", 2));
             document.Append(
@@ -49,6 +60,24 @@ namespace MarkdownBuilder.Sample
 
             document.Append(new MarkdownTitle("Image", 2));
             document.Append(new MarkdownParagraph(new MarkdownImage("GitHub", "https://github.githubassets.com/apple-touch-icon-180x180.png")));
+
+            document.Append(new MarkdownTitle("Emoji", 2));
+            document.Append(new MarkdownParagraph(new MarkdownEmoji("thumbsup")));
+
+            document.Append(new MarkdownTitle("Emphasis", 2));
+            document.Append(new MarkdownParagraph(new MarkdownEmphasis("Emphasis")));
+
+            document.Append(new MarkdownTitle("StrongEmphasis", 2));
+            document.Append(new MarkdownParagraph(new MarkdownStrongEmphasis("Strong emphasis")));
+
+            document.Append(new MarkdownTitle("Strikethrough", 2));
+            document.Append(new MarkdownParagraph(new MarkdownStrikethrough("Strikethrough")));
+
+            document.Append(new MarkdownTitle("Inline code", 2));
+            document.Append(new MarkdownParagraph(new MarkdownInlineCode("code")));
+
+            document.Append(new MarkdownTitle("Link", 2));
+            document.Append(new MarkdownParagraph(new MarkdownLink("markdown-builder-dotnet", "https://github.com/charlesdevandiere/markdown-builder-dotnet")));
 
             Console.Write(document);
 
