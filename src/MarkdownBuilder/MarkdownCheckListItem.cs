@@ -9,7 +9,7 @@ namespace Markdown
         /// Gets or sets the item state.
         /// </summary>
         /// <value><c>true</c> if the item is checked; otherwise, <c>false</c>. The default is <c>false</c>.</value>
-        public bool Checked { get; private set; }
+        public bool Checked { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownCheckListItem" /> class.

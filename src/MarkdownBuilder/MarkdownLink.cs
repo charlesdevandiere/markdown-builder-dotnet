@@ -9,7 +9,7 @@ namespace Markdown
         /// Gets or sets the link URL.
         /// </summary>
         /// <value>Link URL.</value>
-        public string Url { get; private set; }
+        public string Url { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownLink" /> class.

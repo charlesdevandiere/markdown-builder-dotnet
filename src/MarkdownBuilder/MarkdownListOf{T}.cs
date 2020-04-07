@@ -48,9 +48,28 @@ namespace Markdown
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownList" /> class.
         /// </summary>
+        /// <param name="listItems">The list items.</param>
+        public MarkdownList(IEnumerable<T> listItems)
+        {
+            this.ListItems = new List<T>(listItems);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
+        /// </summary>
         /// <param name="char">The bullet point character.</param>
         /// <param name="listItems">The list items.</param>
         public MarkdownList(char @char, params T[] listItems) : this(listItems)
+        {
+            this.Char = @char;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
+        /// </summary>
+        /// <param name="char">The bullet point character.</param>
+        /// <param name="listItems">The list items.</param>
+        public MarkdownList(char @char, IEnumerable<T> listItems) : this(listItems)
         {
             this.Char = @char;
         }

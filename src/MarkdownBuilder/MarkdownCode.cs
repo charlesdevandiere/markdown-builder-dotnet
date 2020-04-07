@@ -11,7 +11,7 @@ namespace Markdown
         /// Gets or sets the code language.
         /// </summary>
         /// <value>Code language.</value>
-        public string Language { get; private set; }
+        public string Language { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownCode" /> class.

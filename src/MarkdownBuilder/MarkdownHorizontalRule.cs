@@ -1,4 +1,5 @@
 using System;
+using Dawn;
 
 namespace Markdown
 {
@@ -7,17 +8,36 @@ namespace Markdown
     /// </summary>
     public class MarkdownHorizontalRule
     {
+        private char @char;
+
         /// <summary>
         /// Gets or sets the horizontal rule character.
         /// </summary>
         /// <value>Horizontal rule character.</value>
-        public char Char { get; private set; }
+        public char Char
+        {
+            get => this.@char;
+            set
+            {
+                Guard.Argument(value, nameof(value))
+                    .In('-', '*', '_');
+                this.@char = value;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownHorizontalRule" /> class.
         /// </summary>
-        /// <param name="char">The emphasis character. Default is '-'.</param>
-        public MarkdownHorizontalRule(char @char = '-')
+        public MarkdownHorizontalRule()
+        {
+            this.Char = '-';
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MarkdownHorizontalRule" /> class.
+        /// </summary>
+        /// <param name="char">The emphasis character.</param>
+        public MarkdownHorizontalRule(char @char)
         {
             this.Char = @char;
         }

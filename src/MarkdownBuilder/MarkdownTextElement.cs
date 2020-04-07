@@ -1,4 +1,4 @@
-using Dawn;
+﻿using Dawn;
 
 namespace Markdown
 {
@@ -30,7 +30,7 @@ namespace Markdown
 
                 return this.text;
             }
-            protected set => this.text = value;
+            set => this.text = value;
         }
 
         /// <summary>
@@ -51,6 +51,15 @@ namespace Markdown
             Guard.Argument(inlineElement, nameof(inlineElement)).NotNull();
 
             this.InlineElement = inlineElement;
+        }
+
+        /// <summary>
+        /// Returns a string that represents the current markdown text element.
+        /// </summary>
+        /// <returns>A string that represents the current markdown text element.</returns>
+        public override string ToString()
+        {
+            return this.Text;
         }
     }
 }

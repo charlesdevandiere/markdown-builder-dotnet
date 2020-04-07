@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Markdown
 {
     /// <summary>
@@ -25,8 +27,14 @@ namespace Markdown
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownList" /> class.
         /// </summary>
+        /// <param name="listItems">The list items.</param>
+        public MarkdownList(IEnumerable<MarkdownListItem> listItems) : base(listItems) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
+        /// </summary>
         /// <param name="char">The bullet point character.</param>
         /// <param name="listItems">The list items.</param>
-        public MarkdownList(char @char, params MarkdownListItem[] listItems) : base(@char, listItems) { }
+        public MarkdownList(char @char, IEnumerable<MarkdownListItem> listItems) : base(@char, listItems) { }
     }
 }
