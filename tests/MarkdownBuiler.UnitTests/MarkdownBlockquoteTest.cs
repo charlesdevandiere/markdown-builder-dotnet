@@ -27,7 +27,7 @@ namespace MarkdownBuiler.UnitTests
         {
             var blockquote = new MarkdownBlockquote("Blockquote");
 
-            Assert.Equal($"> Blockquote{Environment.NewLine}{Environment.NewLine}", blockquote.ToString());
+            Assert.Equal($"> Blockquote{Environment.NewLine}", blockquote.ToString());
         }
     }
 }

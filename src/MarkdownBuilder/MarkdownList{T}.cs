@@ -11,13 +11,13 @@ namespace Markdown
     /// <typeparam name="T">The list items type.</typeparam>
     public abstract class MarkdownList<T> : IMarkdownListItem, IMarkdownBlockElement where T : IMarkdownListItem
     {
+        private readonly char Char;
+
         /// <summary>
-        /// Gets or sets the list items.
+        /// Gets the list items.
         /// </summary>
         /// <value>List items.</value>
-        protected List<T> ListItems { get; set; }
-
-        private readonly char Char;
+        public List<T> ListItems { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownList{T}" /> class.
@@ -74,24 +74,6 @@ namespace Markdown
         public MarkdownList(char @char, IEnumerable<T> listItems) : this(listItems)
         {
             this.Char = @char;
-        }
-
-        /// <summary>
-        /// Adds a item to the end of the <see cref="MarkdownList{T}" />.
-        /// </summary>
-        /// <param name="listItem">The list item to be added to the end of the <see cref="MarkdownList{T}" />.</param>
-        public void Add(T listItem)
-        {
-            this.ListItems.Add(listItem);
-        }
-
-        /// <summary>
-        /// Adds the items of the specified collection to the end of the <see cref="MarkdownList{T}" />.
-        /// </summary>
-        /// <param name="listItems">The item collection to be added to the end of the <see cref="MarkdownList{T}" />.</param>
-        public void AddRange(IEnumerable<T> listItems)
-        {
-            this.ListItems.AddRange(listItems);
         }
 
         /// <summary>
