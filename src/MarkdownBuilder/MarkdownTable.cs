@@ -99,6 +99,8 @@ namespace Markdown
                 sb.AppendLine(row.ToString());
             }
 
+            sb.Capacity= 0;
+
             return sb.ToString();
         }
     }

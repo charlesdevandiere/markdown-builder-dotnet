@@ -5,6 +5,10 @@
     /// </summary>
     public interface IMarkdownDocument
     {
+        int Capacity { get; set; }
+
+        int Length { get; }
+
         /// <summary>Clears this markdown document.</summary>
         /// <returns>The markdown document.</returns>
         IMarkdownDocument Clear();
@@ -18,6 +22,14 @@
         /// <param name="index">The block element index.</param>
         /// <returns>The markdown document.</returns>
         IMarkdownDocument Remove(int index);
+
+        IMarkdownDocument Remove(IMarkdownBlockElement blockElement);
+
+        IMarkdownBlockElement ElementAt(int index);
+
+        IMarkdownDocument Replace(IMarkdownBlockElement oldBlockElement, IMarkdownBlockElement newBlockElement);
+
+        IMarkdownDocument Insert(int index, IMarkdownBlockElement blockElement);
 
         /// <summary>
         /// Returns a string that represents the current markdown document.
