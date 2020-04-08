@@ -19,19 +19,19 @@ namespace MarkdownBuilder.Sample
             document.Append(
                 new MarkdownTextList(
                     new MarkdownTextListItem("One"),
-                    new MarkdownTextListItem("Tow")));
+                    new MarkdownTextListItem("Two")));
 
             document.Append(new MarkdownTitle("Ordered list", 2));
             document.Append(
                 new MarkdownOrderedList(
                     new MarkdownTextListItem("One"),
-                    new MarkdownTextListItem("Tow")));
+                    new MarkdownTextListItem("Two")));
 
             document.Append(new MarkdownTitle("Check list", 2));
             document.Append(
                 new MarkdownCheckList(
                     new MarkdownCheckListItem(true, "One"),
-                    new MarkdownCheckListItem(false, "Tow")));
+                    new MarkdownCheckListItem(false, "Two")));
 
             document.Append(new MarkdownTitle("Table", 2));
             document.Append(
