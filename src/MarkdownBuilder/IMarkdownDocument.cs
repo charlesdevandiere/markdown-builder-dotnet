@@ -27,6 +27,8 @@
 
         IMarkdownBlockElement ElementAt(int index);
 
+        int IndexOf(IMarkdownBlockElement blockElement);
+
         IMarkdownDocument Replace(IMarkdownBlockElement oldBlockElement, IMarkdownBlockElement newBlockElement);
 
         IMarkdownDocument Insert(int index, IMarkdownBlockElement blockElement);

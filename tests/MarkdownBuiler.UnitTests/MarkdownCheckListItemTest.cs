@@ -8,25 +8,19 @@ namespace MarkdownBuiler.UnitTests
         [Fact]
         public void TestChecked()
         {
-            var item = new MarkdownCheckListItem(true, "Text");
-
-            Assert.True(item.Checked);
+            Assert.True(new MarkdownCheckListItem(true, "Text").Checked);
         }
 
         [Fact]
         public void TestUnchecked()
         {
-            var item = new MarkdownCheckListItem(false, "Text");
-
-            Assert.False(item.Checked);
+            Assert.False(new MarkdownCheckListItem(false, "Text").Checked);
         }
 
         [Fact]
         public void TestText()
         {
-            var item = new MarkdownCheckListItem(true, "Text");
-
-            Assert.Equal("Text", item.Text);
+            Assert.Equal("Text", new MarkdownCheckListItem(true, "Text").Text);
         }
 
         [Fact]

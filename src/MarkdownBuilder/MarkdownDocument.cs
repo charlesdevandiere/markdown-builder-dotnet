@@ -50,6 +50,11 @@ namespace Markdown
 
         public IMarkdownBlockElement ElementAt(int index) => this.blockElements[index];
 
+        public int IndexOf(IMarkdownBlockElement blockElement)
+        {
+            return this.blockElements.IndexOf(blockElement);
+        }
+
         public IMarkdownDocument Insert(int index, IMarkdownBlockElement blockElement)
         {
             this.blockElements.Insert(index, blockElement);
@@ -76,9 +81,13 @@ namespace Markdown
 
         public IMarkdownDocument Replace(IMarkdownBlockElement oldBlockElement, IMarkdownBlockElement newBlockElement)
         {
-            this.blockElements
-                .FindAll(element => element == oldBlockElement)
-                .ForEach(element => element = newBlockElement);
+            for (int i = 0; i < this.blockElements.Count; i++)
+            {
+                if (this.blockElements[i] == oldBlockElement)
+                {
+                    this.blockElements[i] = newBlockElement;
+                }
+            }
 
             return this;
         }

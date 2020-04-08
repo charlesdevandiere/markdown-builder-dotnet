@@ -9,33 +9,29 @@ namespace MarkdownBuiler.UnitTests
         [Fact]
         public void TestText()
         {
-            var code = new MarkdownCode("csharp", "var foo = \"Foo\";");
-
-            Assert.Equal("var foo = \"Foo\";", code.Text);
+            Assert.Equal("var foo = \"Foo\";", new MarkdownCode("csharp", "var foo = \"Foo\";").Text);
         }
 
         [Fact]
         public void TestInlineElement()
         {
-            var blockquote = new MarkdownCode("csharp", new MarkdownText("var foo = \"Foo\";"));
-
-            Assert.Equal("var foo = \"Foo\";", blockquote.Text);
+            var inlineElement = new MarkdownText("var foo = \"Foo\";");
+            Assert.Equal("var foo = \"Foo\";", new MarkdownCode("csharp", inlineElement).Text);
         }
 
         [Fact]
         public void TestLanguage()
         {
-            var code = new MarkdownCode("csharp", "var foo = \"Foo\";");
-
-            Assert.Equal("csharp", code.Language);
+            Assert.Equal("csharp", new MarkdownCode("csharp", "var foo = \"Foo\";").Language);
         }
 
         [Fact]
         public void TestToString()
         {
-            var code = new MarkdownCode("csharp", "var foo = \"Foo\";");
-
-            Assert.Equal("```csharp" + Environment.NewLine + "var foo = \"Foo\";" + Environment.NewLine + "```" + Environment.NewLine, code.ToString());
+            Assert.Equal(
+                "```csharp" + Environment.NewLine + "var foo = \"Foo\";" + Environment.NewLine + "```" + Environment.NewLine,
+                new MarkdownCode("csharp", "var foo = \"Foo\";").ToString()
+            );
         }
     }
 }
