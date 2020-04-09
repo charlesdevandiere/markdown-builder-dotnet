@@ -17,7 +17,13 @@ namespace Markdown
 
         /// <summary>Gets the rows.</summary>
         /// <value>The rows.</value>
-        public ICollection<MarkdownTableRow> Rows { get; }
+        private List<MarkdownTableRow> Rows { get; }
+
+        public int ColumnCount => this.Header.Cells.Length;
+
+        public int RowsCount => this.Rows.Count;
+
+        public int RowsCapacity => this.Rows.Capacity;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownTable"/> class.
@@ -38,7 +44,7 @@ namespace Markdown
         /// </summary>
         /// <param name="header">The header.</param>
         /// <param name="rows">The rows.</param>
-        public MarkdownTable(MarkdownTableHeader header, ICollection<MarkdownTableRow> rows)
+        public MarkdownTable(MarkdownTableHeader header, IEnumerable<MarkdownTableRow> rows)
         {
             Guard.Argument(header, nameof(header))
                 .NotNull()
@@ -53,7 +59,7 @@ namespace Markdown
                 this.CheckRow(row);
             }
 
-            this.Rows = rows;
+            this.Rows = new List<MarkdownTableRow>(rows);
         }
 
         /// <summary>
@@ -71,6 +77,31 @@ namespace Markdown
 
             this.Header = header;
             this.Rows = new List<MarkdownTableRow>(capacity);
+        }
+
+        public void AddRow(MarkdownTableRow row)
+        {
+            this.CheckRow(row);
+            this.Rows.Add(row);
+        }
+
+        public void AddRowRange(IEnumerable<MarkdownTableRow> rows)
+        {
+            foreach (MarkdownTableRow row in rows)
+            {
+                this.CheckRow(row);
+            }
+            this.Rows.AddRange(rows);
+        }
+
+        public MarkdownTableRow GetRowAt(int index)
+        {
+            return this.Rows.ElementAt(index);
+        }
+
+        public void RemoveRowAt(int index)
+        {
+            this.Rows.RemoveAt(index);
         }
 
         private void CheckRow(MarkdownTableRow row)
@@ -93,13 +124,10 @@ namespace Markdown
 
             sb.AppendLine(this.Header.ToString());
 
-            foreach (MarkdownTableRow row in this.Rows.Where(r => r != null))
+            foreach (MarkdownTableRow row in this.Rows)
             {
-                this.CheckRow(row);
                 sb.AppendLine(row.ToString());
             }
-
-            sb.Capacity= 0;
 
             return sb.ToString();
         }

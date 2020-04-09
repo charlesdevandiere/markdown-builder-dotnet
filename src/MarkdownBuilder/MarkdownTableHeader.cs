@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Markdown
 {
@@ -17,9 +15,9 @@ namespace Markdown
         /// Initializes a new instance of the <see cref="MarkdownTableHeader"/> class.
         /// </summary>
         /// <param name="cells">The cells.</param>
-        public MarkdownTableHeader(MarkdownTableHeaderCell[] cells)
+        public MarkdownTableHeader(params MarkdownTableHeaderCell[] cells)
         {
-            this.Cells = cells;
+            this.Cells = (MarkdownTableHeaderCell[])cells.Clone();
         }
 
         /// <summary>
@@ -45,7 +43,7 @@ namespace Markdown
                 headerTexts = string.Concat(headerTexts, $"| {cell.Text} ");
                 columnAlignments = string.Concat(columnAlignments, $"| {cell.ColumnTextAlignment.Print()} ");
             }
-            
+
             headerTexts = string.Concat(headerTexts, "|");
             columnAlignments = string.Concat(columnAlignments, "|");
 
