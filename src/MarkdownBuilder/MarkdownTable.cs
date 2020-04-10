@@ -23,7 +23,15 @@ namespace Markdown
 
         public int RowsCount => this.Rows.Count;
 
-        public int RowsCapacity => this.Rows.Capacity;
+        public int RowsCapacity
+        {
+            get => this.Rows.Capacity;
+            set
+            {
+                this.CheckRowsCapacity(value);
+                this.Rows.Capacity = value;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownTable"/> class.
@@ -32,8 +40,7 @@ namespace Markdown
         public MarkdownTable(MarkdownTableHeader header)
         {
             Guard.Argument(header, nameof(header))
-                .NotNull()
-                .Require(h => h.Cells.Length > 0);
+                .NotNull();
 
             this.Header = header;
             this.Rows = new List<MarkdownTableRow>();
@@ -47,9 +54,6 @@ namespace Markdown
         public MarkdownTable(MarkdownTableHeader header, IEnumerable<MarkdownTableRow> rows)
         {
             Guard.Argument(header, nameof(header))
-                .NotNull()
-                .Require(h => h.Cells.Length > 0);
-            Guard.Argument(rows, nameof(rows))
                 .NotNull();
 
             this.Header = header;
@@ -70,10 +74,8 @@ namespace Markdown
         public MarkdownTable(MarkdownTableHeader header, int capacity) : this(header)
         {
             Guard.Argument(header, nameof(header))
-                .NotNull()
-                .Require(h => h.Cells.Length > 0);
-            Guard.Argument(capacity, nameof(capacity))
-                .GreaterThan(-1);
+                .NotNull();
+            this.CheckRowsCapacity(capacity);
 
             this.Header = header;
             this.Rows = new List<MarkdownTableRow>(capacity);
@@ -102,6 +104,12 @@ namespace Markdown
         public void RemoveRowAt(int index)
         {
             this.Rows.RemoveAt(index);
+        }
+
+        private void CheckRowsCapacity(int capacity)
+        {
+            Guard.Argument(capacity, nameof(capacity))
+                .GreaterThan(-1, (int value, int other) => $"Table rows capacity must be greater that or equal to 0.");
         }
 
         private void CheckRow(MarkdownTableRow row)

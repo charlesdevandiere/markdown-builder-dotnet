@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Markdown;
 using Xunit;
 
@@ -26,9 +25,9 @@ namespace MarkdownBuiler.UnitTests
         }
 
         [Fact]
-        public void TestEmptyHeader()
+        public void TestNullHeader()
         {
-            Assert.Throws<ArgumentException>(() => new MarkdownTable(new MarkdownTableHeader(0)));
+            Assert.Throws<ArgumentNullException>(() => new MarkdownTable(null));
         }
 
         [Fact]
@@ -54,6 +53,20 @@ namespace MarkdownBuiler.UnitTests
                 Assert.Equal(2, table.RowsCount);
                 Assert.Equal(2, table.RowsCapacity);
             }
+        }
+
+        [Fact]
+        public void TestNegativeRowsCapacity()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(
+                () => new MarkdownTable(
+                    new MarkdownTableHeader(3),
+                    -1
+                )
+            );
+            Assert.Throws<ArgumentOutOfRangeException>(
+                () => new MarkdownTable(new MarkdownTableHeader(3)).RowsCapacity = -1
+            );
         }
 
         [Fact]

@@ -1,4 +1,5 @@
 ﻿using System;
+using Dawn;
 
 namespace Markdown
 {
@@ -17,6 +18,9 @@ namespace Markdown
         /// <param name="cells">The cells.</param>
         public MarkdownTableHeader(params MarkdownTableHeaderCell[] cells)
         {
+            Guard.Argument(cells, nameof(cells))
+                .NotEmpty((MarkdownTableHeaderCell[] cells) => $"Table header cells length must be greater that 0.");
+            
             this.Cells = (MarkdownTableHeaderCell[])cells.Clone();
         }
 
@@ -26,6 +30,9 @@ namespace Markdown
         /// <param name="capacity">The header cell capacity.</param>
         public MarkdownTableHeader(int capacity)
         {
+            Guard.Argument(capacity, nameof(capacity))
+                .GreaterThan(0, (int value, int other) => $"Table header cells capacity must be greater that 0.");
+
             this.Cells = new MarkdownTableHeaderCell[capacity];
         }
 
