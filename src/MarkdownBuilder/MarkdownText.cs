@@ -11,6 +11,12 @@ namespace Markdown
         private readonly ICollection<object> fragments = new List<object>();
 
         /// <summary>
+        /// Gets or sets the text.
+        /// </summary>
+        /// <value>The text or a string that represents the markdown text.</value>
+        public new string Text => string.Concat(this.fragments.Select(fragment => fragment.ToString()));
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownText" /> class.
         /// </summary>
         /// <param name="text">The text.</param>
@@ -58,7 +64,7 @@ namespace Markdown
         /// <returns>A string that represents the current markdown text.</returns>
         public override string ToString()
         {
-            return string.Concat(this.fragments.Select(fragment => fragment.ToString()));
+            return this.Text;
         }
     }
 }

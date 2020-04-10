@@ -39,6 +39,17 @@ namespace Markdown
         /// Initializes a new instance of the <see cref="MarkdownTableRow"/> class.
         /// </summary>
         /// <param name="cells">The cells.</param>
+        public MarkdownTableRow(IEnumerable<string> cells)
+        {
+            Guard.Argument(cells, nameof(cells)).NotNull();
+
+            this.Cells = cells.Select(cell => new MarkdownText(cell)).ToArray();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MarkdownTableRow"/> class.
+        /// </summary>
+        /// <param name="cells">The cells.</param>
         public MarkdownTableRow(params string[] cells)
         {
             Guard.Argument(cells, nameof(cells)).NotNull();

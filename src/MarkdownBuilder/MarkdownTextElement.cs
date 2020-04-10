@@ -7,11 +7,25 @@ namespace Markdown
     /// </summary>
     public abstract class MarkdownTextElement
     {
+        private MarkdownInlineElement inlineElement;
+
         /// <summary>
         /// Gets or sets the markdown inline element.
         /// </summary>
         /// <value>The markdown inline element.</value>
-        protected MarkdownInlineElement InlineElement { get; set; }
+        protected MarkdownInlineElement InlineElement
+        {
+            get => this.inlineElement;
+            set
+            {
+                if (value != null)
+                {
+                    this.Text = null;
+                }
+
+                this.inlineElement = value;
+            }
+        }
 
         private string text;
 
@@ -23,14 +37,22 @@ namespace Markdown
         {
             get
             {
-                if (this.InlineElement != null)
+                if (this.text == null && this.InlineElement != null)
                 {
-                    this.text = this.InlineElement.ToString();
+                    return this.InlineElement.ToString();
                 }
 
                 return this.text;
             }
-            set => this.text = value;
+            set
+            {
+                if (value != null)
+                {
+                    this.InlineElement = null;
+                }
+
+                this.text = value;
+            }
         }
 
         /// <summary>
