@@ -11,7 +11,22 @@ namespace Markdown
     /// <typeparam name="T">The list items type.</typeparam>
     public abstract class MarkdownList<T> : IMarkdownListItem, IMarkdownBlockElement where T : IMarkdownListItem
     {
-        private readonly char Char;
+        private char @char;
+
+        /// <summary>
+        /// Gets or sets the bullet point character.
+        /// </summary>
+        /// <value>The bullet point character.</value>
+        public char Char
+        {
+            get => this.@char;
+            set
+            {
+                Guard.Argument(value, nameof(value)).In('-', '*');
+
+                this.@char = value;
+            }
+        }
 
         /// <summary>
         /// Gets the list items.
@@ -24,6 +39,7 @@ namespace Markdown
         /// </summary>
         public MarkdownList()
         {
+            this.Char = '-';
             this.ListItems = new List<T>();
         }
 
@@ -42,8 +58,8 @@ namespace Markdown
         /// <param name="listItems">The list items.</param>
         public MarkdownList(params T[] listItems)
         {
-            this.ListItems = new List<T>(listItems);
             this.Char = '-';
+            this.ListItems = new List<T>(listItems);
         }
 
         /// <summary>
@@ -52,8 +68,8 @@ namespace Markdown
         /// <param name="listItems">The list items.</param>
         public MarkdownList(IEnumerable<T> listItems)
         {
-            this.ListItems = new List<T>(listItems);
             this.Char = '-';
+            this.ListItems = new List<T>(listItems);
         }
 
         /// <summary>
