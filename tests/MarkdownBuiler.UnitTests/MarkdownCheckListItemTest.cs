@@ -24,6 +24,12 @@ namespace MarkdownBuiler.UnitTests
         }
 
         [Fact]
+        public void TestInlineElement()
+        {
+            Assert.Equal("Inline element", new MarkdownCheckListItem(true, new MarkdownText("Inline element")).Text);
+        }
+
+        [Fact]
         public void TestToString()
         {
             Assert.Equal("[x] Text", new MarkdownCheckListItem(true, "Text").ToString());

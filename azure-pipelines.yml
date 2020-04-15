@@ -28,7 +28,7 @@ steps:
   - script: dotnet tool restore
     displayName: 'dotnet tool restore'
 
-  - script: dotnet test -c $(buildConfiguration) --logger xunit -p:CollectCoverage=true -p:CoverletOutputFormat=cobertura -p:Exclude="[*]Shared.Models.*"
+  - script: dotnet test -c $(buildConfiguration) --logger xunit -p:CollectCoverage=true -p:CoverletOutputFormat=cobertura
     displayName: 'dotnet test'
 
   - script: dotnet pack ./src/MarkdownBuilder/MarkdownBuilder.csproj -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)/out -p:Version=$(GitVersion.SemVer) --include-symbols
