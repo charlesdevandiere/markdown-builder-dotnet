@@ -25,6 +25,12 @@ namespace Markdown
         public MarkdownOrderedList(IEnumerable<MarkdownTextListItem> listItems) : base(listItems) { }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="MarkdownOrderedList" /> class.
+        /// </summary>
+        /// <param name="listItems">The list items.</param>
+        public MarkdownOrderedList(params string[] listItems) : base(listItems) { }
+
+        /// <summary>
         /// Prints the bullet point.
         /// </summary>
         /// <param name="index">The index of the bullet point.</param>

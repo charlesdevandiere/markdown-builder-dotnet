@@ -21,8 +21,8 @@ namespace MarkdownBuilder.Sample
                     new MarkdownTextListItem("One"),
                     new MarkdownTextListItem("Two"),
                     new MarkdownList(
-                        new MarkdownTextListItem("One"),
-                        new MarkdownTextListItem("Two")
+                        new MarkdownTextListItem("First"),
+                        new MarkdownTextListItem("Second")
                     )
                 ));
 
@@ -36,8 +36,11 @@ namespace MarkdownBuilder.Sample
             document.Append(new MarkdownTitle("Check list", 2));
             document.Append(
                 new MarkdownList(
-                    new MarkdownCheckListItem(true, "One"),
-                    new MarkdownCheckListItem(false, "Two")
+                    new MarkdownCheckListItem(true, "Done"),
+                    new MarkdownCheckListItem(false, "To do"),
+                    new MarkdownList(
+                        new MarkdownCheckListItem(true, "Done")
+                    )
                 ));
 
             document.Append(new MarkdownTitle("Table", 2));

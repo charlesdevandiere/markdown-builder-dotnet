@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Markdown;
 using Xunit;
 
@@ -21,6 +22,31 @@ namespace MarkdownBuiler.UnitTests
             var orderedList = new MarkdownOrderedList(
                 new MarkdownTextListItem("One"),
                 new MarkdownTextListItem("Two")
+            );
+
+            Assert.Equal(2, orderedList.ListItems.Count);
+        }
+
+        [Fact]
+        public void TestConstructorWithListItemsEnumerable()
+        {
+            var orderedList = new MarkdownOrderedList(
+                new List<MarkdownTextListItem>
+                {
+                    new MarkdownTextListItem("One"),
+                    new MarkdownTextListItem("Two")
+                }
+            );
+
+            Assert.Equal(2, orderedList.ListItems.Count);
+        }
+
+        [Fact]
+        public void TestConstructorWithStrings()
+        {
+            var orderedList = new MarkdownOrderedList(
+                "One",
+                "Two"
             );
 
             Assert.Equal(2, orderedList.ListItems.Count);

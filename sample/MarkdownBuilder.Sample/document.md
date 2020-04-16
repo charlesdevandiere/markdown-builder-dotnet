@@ -8,8 +8,8 @@ Text
 
 - One
 - Two
-  - One
-  - Two
+  - First
+  - Second
 
 ## Ordered list
 
@@ -18,8 +18,9 @@ Text
 
 ## Check list
 
-- [x] One
-- [ ] Two
+- [x] Done
+- [ ] To do
+  - [x] Done
 
 ## Table
 

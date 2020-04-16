@@ -31,6 +31,13 @@ namespace MarkdownBuiler.UnitTests
         }
 
         [Fact]
+        public void TestColumnCount()
+        {
+            var table = new MarkdownTable(new MarkdownTableHeader(3));
+            Assert.Equal(3, table.ColumnCount);
+        }
+
+        [Fact]
         public void TestRows()
         {
             {
@@ -53,6 +60,14 @@ namespace MarkdownBuiler.UnitTests
                 Assert.Equal(2, table.RowsCount);
                 Assert.Equal(2, table.RowsCapacity);
             }
+        }
+
+        [Fact]
+        public void TestRowsCapacity()
+        {
+            var table = new MarkdownTable(new MarkdownTableHeader(3));
+            table.RowsCapacity = 3;
+            Assert.Equal(3, table.RowsCapacity);
         }
 
         [Fact]

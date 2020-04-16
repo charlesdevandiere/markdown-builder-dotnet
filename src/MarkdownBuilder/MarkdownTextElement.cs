@@ -74,14 +74,5 @@ namespace Markdown
 
             this.InlineElement = inlineElement;
         }
-
-        /// <summary>
-        /// Returns a string that represents the current markdown text element.
-        /// </summary>
-        /// <returns>A string that represents the current markdown text element.</returns>
-        public override string ToString()
-        {
-            return this.Text;
-        }
     }
 }
