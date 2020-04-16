@@ -10,7 +10,7 @@ namespace MarkdownBuiler.UnitTests
         [Fact]
         public void TestEmptyConstructor()
         {
-            var list = new MarkdownTextList();
+            var list = new MarkdownList();
 
             Assert.Empty(list.ListItems);
             Assert.Equal('-', list.Char);
@@ -20,20 +20,20 @@ namespace MarkdownBuiler.UnitTests
         [Fact]
         public void TestConstructorWithChar()
         {
-            Assert.Equal('-', new MarkdownTextList('-').Char);
-            Assert.Equal('*', new MarkdownTextList('*').Char);
+            Assert.Equal('-', new MarkdownList('-').Char);
+            Assert.Equal('*', new MarkdownList('*').Char);
         }
 
         [Fact]
         public void TestConstructorInvalidChar()
         {
-            Assert.Throws<ArgumentException>(() => new MarkdownTextList('a'));
+            Assert.Throws<ArgumentException>(() => new MarkdownList('a'));
         }
 
         [Fact]
         public void TestConstructorWithListItemsArray()
         {
-            var list = new MarkdownTextList(
+            var list = new MarkdownList(
                 new MarkdownTextListItem("One"),
                 new MarkdownTextListItem("Two")
             );
@@ -45,7 +45,7 @@ namespace MarkdownBuiler.UnitTests
         [Fact]
         public void TestConstructorWithListItemsEnumerable()
         {
-            var list = new MarkdownTextList(
+            var list = new MarkdownList(
                 new List<MarkdownTextListItem> {
                     new MarkdownTextListItem("One"),
                     new MarkdownTextListItem("Two")
@@ -59,7 +59,7 @@ namespace MarkdownBuiler.UnitTests
         [Fact]
         public void TestConstructorWithStringArray()
         {
-            var list = new MarkdownTextList("One", "Two");
+            var list = new MarkdownList("One", "Two");
 
             Assert.Equal('-', list.Char);
             Assert.Equal(2, list.ListItems.Count);
@@ -69,7 +69,7 @@ namespace MarkdownBuiler.UnitTests
         public void TestConstructorWithCharAndListItemsArray()
         {
             {
-                var list = new MarkdownTextList(
+                var list = new MarkdownList(
                     '-',
                     new MarkdownTextListItem("One"),
                     new MarkdownTextListItem("Two")
@@ -79,7 +79,7 @@ namespace MarkdownBuiler.UnitTests
                 Assert.Equal(2, list.ListItems.Count);
             }
             {
-                var list = new MarkdownTextList(
+                var list = new MarkdownList(
                     '*',
                     new MarkdownTextListItem("One"),
                     new MarkdownTextListItem("Two")
@@ -94,7 +94,7 @@ namespace MarkdownBuiler.UnitTests
         public void TestConstructorInvalidCharAndListItemsArray()
         {
             Assert.Throws<ArgumentException>(
-                () => new MarkdownTextList(
+                () => new MarkdownList(
                     'a',
                     new MarkdownTextListItem("One"),
                     new MarkdownTextListItem("Two")
@@ -106,7 +106,7 @@ namespace MarkdownBuiler.UnitTests
         public void TestConstructorWithCharAndListItemsEnumerable()
         {
             {
-                var list = new MarkdownTextList(
+                var list = new MarkdownList(
                     '-',
                     new List<MarkdownTextListItem> {
                         new MarkdownTextListItem("One"),
@@ -118,7 +118,7 @@ namespace MarkdownBuiler.UnitTests
                 Assert.Equal(2, list.ListItems.Count);
             }
             {
-                var list = new MarkdownTextList(
+                var list = new MarkdownList(
                     '*',
                     new List<MarkdownTextListItem> {
                         new MarkdownTextListItem("One"),
@@ -135,7 +135,7 @@ namespace MarkdownBuiler.UnitTests
         public void TestConstructorInvalidCharAndListItemsEnumerable()
         {
             Assert.Throws<ArgumentException>(
-                () => new MarkdownTextList(
+                () => new MarkdownList(
                     'a',
                     new List<MarkdownTextListItem> {
                         new MarkdownTextListItem("One"),
@@ -149,13 +149,13 @@ namespace MarkdownBuiler.UnitTests
         public void TestConstructorWithCharAndStringArray()
         {
             {
-                var list = new MarkdownTextList('-', "One", "Two");
+                var list = new MarkdownList('-', "One", "Two");
 
                 Assert.Equal('-', list.Char);
                 Assert.Equal(2, list.ListItems.Count);
             }
             {
-                var list = new MarkdownTextList('*', "One", "Two");
+                var list = new MarkdownList('*', "One", "Two");
 
                 Assert.Equal('*', list.Char);
                 Assert.Equal(2, list.ListItems.Count);
@@ -165,18 +165,26 @@ namespace MarkdownBuiler.UnitTests
         [Fact]
         public void TestConstructorInvalidCharAndStringArray()
         {
-            Assert.Throws<ArgumentException>(() => new MarkdownTextList('a', "One", "Two"));
+            Assert.Throws<ArgumentException>(() => new MarkdownList('a', "One", "Two"));
         }
 
         [Fact]
         public void TestToString()
         {
-            var list = new MarkdownTextList(
+            var list = new MarkdownList(
                 new MarkdownTextListItem("One"),
-                new MarkdownTextListItem("Two")
+                new MarkdownTextListItem("Two"),
+                new MarkdownList(
+                    new MarkdownTextListItem("First"),
+                    new MarkdownTextListItem("Second")
+                )
             );
 
-            Assert.Equal("- One" + Environment.NewLine + "- Two" + Environment.NewLine, list.ToString());
+            Assert.Equal(
+                "- One" + Environment.NewLine +
+                "- Two" + Environment.NewLine +
+                "  - First" + Environment.NewLine +
+                "  - Second" + Environment.NewLine, list.ToString());
         }
     }
 }

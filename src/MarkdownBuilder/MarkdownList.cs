@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Dawn;
 
 namespace Markdown
 {
     /// <summary>
-    /// Markdown list of T
+    /// Markdown list.
     /// </summary>
-    /// <typeparam name="T">The list items type.</typeparam>
-    public abstract class MarkdownList<T> : IMarkdownListItem, IMarkdownBlockElement where T : IMarkdownListItem
+    public class MarkdownList : IMarkdownListItem, IMarkdownBlockElement
     {
         private char @char;
 
@@ -32,65 +32,65 @@ namespace Markdown
         /// Gets the list items.
         /// </summary>
         /// <value>List items.</value>
-        public List<T> ListItems { get; }
+        public List<IMarkdownListItem> ListItems { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkdownList{T}" /> class.
+        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
         /// </summary>
-        public MarkdownList()
-        {
-            this.Char = '-';
-            this.ListItems = new List<T>();
-        }
+        public MarkdownList() : this('-', new List<IMarkdownListItem>()) { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkdownList{T}" /> class.
+        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
         /// </summary>
         /// <param name="char">The bullet point character.</param>
-        public MarkdownList(char @char) : this()
-        {
-            this.Char = @char;
-        }
+        public MarkdownList(char @char) : this(@char, new List<IMarkdownListItem>()) {}
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkdownList{T}" /> class.
+        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
         /// </summary>
         /// <param name="listItems">The list items.</param>
-        public MarkdownList(params T[] listItems)
-        {
-            this.Char = '-';
-            this.ListItems = new List<T>(listItems);
-        }
+        public MarkdownList(params IMarkdownListItem[] listItems) : this('-', new List<IMarkdownListItem>(listItems)) { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkdownList{T}" /> class.
+        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
         /// </summary>
         /// <param name="listItems">The list items.</param>
-        public MarkdownList(IEnumerable<T> listItems)
-        {
-            this.Char = '-';
-            this.ListItems = new List<T>(listItems);
-        }
+        public MarkdownList(IEnumerable<IMarkdownListItem> listItems) : this('-', new List<IMarkdownListItem>(listItems)) { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkdownList{T}" /> class.
+        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
+        /// </summary>
+        /// <param name="listItems">The list items.</param>
+        public MarkdownList(params string[] listItems) : this('-', listItems) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
         /// </summary>
         /// <param name="char">The bullet point character.</param>
         /// <param name="listItems">The list items.</param>
-        public MarkdownList(char @char, params T[] listItems) : this(listItems)
+        public MarkdownList(char @char, params IMarkdownListItem[] listItems)
         {
             this.Char = @char;
+            this.ListItems = new List<IMarkdownListItem>(listItems);
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MarkdownList{T}" /> class.
+        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
         /// </summary>
         /// <param name="char">The bullet point character.</param>
         /// <param name="listItems">The list items.</param>
-        public MarkdownList(char @char, IEnumerable<T> listItems) : this(listItems)
+        public MarkdownList(char @char, IEnumerable<IMarkdownListItem> listItems)
         {
             this.Char = @char;
+            this.ListItems = new List<IMarkdownListItem>(listItems);
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MarkdownList" /> class.
+        /// </summary>
+        /// <param name="char">The bullet point character.</param>
+        /// <param name="listItems">The list items.</param>
+        public MarkdownList(char @char, params string[] listItems) : this(@char, listItems.Select(li => new MarkdownTextListItem(li))) { }
 
         /// <summary>
         /// Returns a string that represents the current markdown list.
@@ -98,7 +98,7 @@ namespace Markdown
         /// <returns>A string that represents the current markdown list.</returns>
         public override string ToString()
         {
-            return string.Concat(this.Print(0));
+            return this.Print(0);
         }
 
         /// <summary>
@@ -125,8 +125,8 @@ namespace Markdown
                         sb.AppendLine(textListItem.ToString());
                         break;
 
-                    case MarkdownTextList list:
-                        sb.AppendLine(list.Print(level + 2));
+                    case MarkdownList list:
+                        sb.Append(list.Print(level + 1));
                         break;
 
                     default:

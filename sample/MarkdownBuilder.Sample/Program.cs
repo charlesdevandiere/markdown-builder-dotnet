@@ -17,21 +17,28 @@ namespace MarkdownBuilder.Sample
 
             document.Append(new MarkdownTitle("List", 2));
             document.Append(
-                new MarkdownTextList(
+                new MarkdownList(
                     new MarkdownTextListItem("One"),
-                    new MarkdownTextListItem("Two")));
+                    new MarkdownTextListItem("Two"),
+                    new MarkdownList(
+                        new MarkdownTextListItem("One"),
+                        new MarkdownTextListItem("Two")
+                    )
+                ));
 
             document.Append(new MarkdownTitle("Ordered list", 2));
             document.Append(
                 new MarkdownOrderedList(
                     new MarkdownTextListItem("One"),
-                    new MarkdownTextListItem("Two")));
+                    new MarkdownTextListItem("Two")
+                ));
 
             document.Append(new MarkdownTitle("Check list", 2));
             document.Append(
-                new MarkdownCheckList(
+                new MarkdownList(
                     new MarkdownCheckListItem(true, "One"),
-                    new MarkdownCheckListItem(false, "Two")));
+                    new MarkdownCheckListItem(false, "Two")
+                ));
 
             document.Append(new MarkdownTitle("Table", 2));
             document.Append(
@@ -41,7 +48,8 @@ namespace MarkdownBuilder.Sample
                     new MarkdownTableRow[] {
                         new MarkdownTableRow(new MarkdownText("cell"), new MarkdownText("cell")),
                         new MarkdownTableRow(new MarkdownText("cell"), new MarkdownText("cell"))
-                    }));
+                    }
+                ));
 
             document.Append(new MarkdownTitle("Code", 2));
             document.Append(new MarkdownCode("csharp", "Console.Write(document);"));

@@ -7,24 +7,26 @@ Text
 ## List
 
 - One
-- Tow
+- Two
+  - One
+  - Two
 
 ## Ordered list
 
 1. One
-2. Tow
+2. Two
 
 ## Check list
 
 - [x] One
-- [ ] Tow
+- [ ] Two
 
 ## Table
 
 | Header | Header |
 | --- | --- |
-| cell | cell  |
-| cell | cell  |
+| cell | cell |
+| cell | cell |
 
 ## Code
 

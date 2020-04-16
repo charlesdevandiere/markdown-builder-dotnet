@@ -5,7 +5,7 @@ namespace Markdown
     /// <summary>
     /// Markdown ordered list.
     /// /// </summary>
-    public class MarkdownOrderedList : MarkdownTextList, IMarkdownBlockElement
+    public class MarkdownOrderedList : MarkdownList, IMarkdownBlockElement
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownOrderedList" /> class.
