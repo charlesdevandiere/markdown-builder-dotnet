@@ -176,7 +176,11 @@ namespace MarkdownBuiler.UnitTests
                 new MarkdownTextListItem("Two"),
                 new MarkdownList(
                     new MarkdownTextListItem("First"),
-                    new MarkdownTextListItem("Second")
+                    new MarkdownTextListItem("Second"),
+                    new MarkdownList(
+                        new MarkdownTextListItem("First"),
+                        new MarkdownTextListItem("Second")
+                    )
                 )
             );
 
@@ -184,7 +188,9 @@ namespace MarkdownBuiler.UnitTests
                 "- One" + Environment.NewLine +
                 "- Two" + Environment.NewLine +
                 "  - First" + Environment.NewLine +
-                "  - Second" + Environment.NewLine, list.ToString());
+                "  - Second" + Environment.NewLine +
+                "    - First" + Environment.NewLine +
+                "    - Second" + Environment.NewLine, list.ToString());
         }
     }
 }

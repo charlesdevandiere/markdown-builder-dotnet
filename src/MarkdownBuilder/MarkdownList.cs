@@ -43,7 +43,7 @@ namespace Markdown
         /// Initializes a new instance of the <see cref="MarkdownList" /> class.
         /// </summary>
         /// <param name="char">The bullet point character.</param>
-        public MarkdownList(char @char) : this(@char, new List<IMarkdownListItem>()) {}
+        public MarkdownList(char @char) : this(@char, new List<IMarkdownListItem>()) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownList" /> class.
@@ -116,21 +116,16 @@ namespace Markdown
             var sb = new StringBuilder();
             for (int i = 0; i < this.ListItems.Count; i++)
             {
-                switch (this.ListItems[i])
+                if (this.ListItems[i] is MarkdownList list)
                 {
-                    case MarkdownTextListItem textListItem:
-                        sb.Append(new string(' ', level * 2));
-                        sb.Append(this.PrintBulletPoint(i));
-                        sb.Append(" ");
-                        sb.AppendLine(textListItem.ToString());
-                        break;
-
-                    case MarkdownList list:
-                        sb.Append(list.Print(level + 1));
-                        break;
-
-                    default:
-                        throw new NotImplementedException();
+                    sb.Append(list.Print(level + 1));
+                }
+                else
+                {
+                    sb.Append(new string(' ', level * 2));
+                    sb.Append(this.PrintBulletPoint(i));
+                    sb.Append(" ");
+                    sb.AppendLine(this.ListItems[i].ToString());
                 }
             }
 
