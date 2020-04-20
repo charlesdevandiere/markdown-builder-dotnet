@@ -1,4 +1,4 @@
-# GraphQL Query Builder .NET
+# MarkdownBuilder
 
 ![logo](https://raw.githubusercontent.com/charlesdevandiere/markdown-builder-dotnet/master/logo.png)
 
