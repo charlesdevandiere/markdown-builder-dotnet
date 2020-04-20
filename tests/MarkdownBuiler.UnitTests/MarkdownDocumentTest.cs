@@ -124,7 +124,7 @@ namespace MarkdownBuiler.UnitTests
         public void TestToString()
         {
             var document = new MarkdownDocument();
-            document.Append(new MarkdownTitle("Title", 1));
+            document.Append(new MarkdownHeader("Title", 1));
             document.Append(new MarkdownParagraph("Paragraph"));
 
             Assert.Equal("# Title" + Environment.NewLine + Environment.NewLine + "Paragraph" + Environment.NewLine, document.ToString());

@@ -19,10 +19,20 @@ namespace Markdown
         /// <value>The rows.</value>
         private List<MarkdownTableRow> Rows { get; }
 
+        /// <summary>
+        /// Gets the number of columns.
+        /// </summary>
         public int ColumnCount => this.Header.Cells.Length;
 
+        /// <summary>
+        /// Gets the number of rows.
+        /// </summary>
         public int RowsCount => this.Rows.Count;
 
+        /// <summary>
+        /// Gets or sets the rows capacity.
+        /// </summary>
+        /// <value>The rows capacity.</value>
         public int RowsCapacity
         {
             get => this.Rows.Capacity;
@@ -81,12 +91,20 @@ namespace Markdown
             this.Rows = new List<MarkdownTableRow>(capacity);
         }
 
+        /// <summary>
+        /// Adds the specific row at the end of the table.
+        /// </summary>
+        /// <param name="row">The row to be added.</param>
         public void AddRow(MarkdownTableRow row)
         {
             this.CheckRow(row);
             this.Rows.Add(row);
         }
 
+        /// <summary>
+        /// Adds the specific rows at the end of the table.
+        /// </summary>
+        /// <param name="rows">The rows to be added.</param>
         public void AddRowRange(IEnumerable<MarkdownTableRow> rows)
         {
             foreach (MarkdownTableRow row in rows)
@@ -96,11 +114,20 @@ namespace Markdown
             this.Rows.AddRange(rows);
         }
 
+        /// <summary>
+        /// Gets the row at the specific index.
+        /// </summary>
+        /// <param name="index">The row index.</param>
+        /// <returns>The row</returns>
         public MarkdownTableRow GetRowAt(int index)
         {
             return this.Rows.ElementAt(index);
         }
 
+        /// <summary>
+        /// Remove the row at the specific index.
+        /// </summary>
+        /// <param name="index">The row index.</param>
         public void RemoveRowAt(int index)
         {
             this.Rows.RemoveAt(index);

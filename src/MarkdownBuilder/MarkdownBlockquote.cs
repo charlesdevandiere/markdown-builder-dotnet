@@ -3,7 +3,7 @@ using System;
 namespace Markdown
 {
     /// <summary>
-    /// Markdown blockqute.
+    /// Markdown blockquote.
     /// </summary>
     public class MarkdownBlockquote : MarkdownTextElement, IMarkdownBlockElement
     {

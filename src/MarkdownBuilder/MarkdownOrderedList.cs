@@ -4,7 +4,7 @@ namespace Markdown
 {
     /// <summary>
     /// Markdown ordered list.
-    /// /// </summary>
+    /// </summary>
     public class MarkdownOrderedList : MarkdownList, IMarkdownBlockElement
     {
         /// <summary>

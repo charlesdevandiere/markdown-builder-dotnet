@@ -24,26 +24,30 @@ Text
 
 ## Table
 
-| Header | Header |
-| --- | --- |
-| cell | cell |
-| cell | cell |
+| Name | Age |
+| --- | --: |
+| John | 27 |
+| Xavier | 42 |
 
 ## Code
 
 ```csharp
-Console.Write(document);
+Console.Write("Hello World!");
 ```
 
-## Titles
+## Headers
 
-### Titles
+# H1
 
-#### Titles
+## H2
 
-##### Titles
+### H3
 
-###### Titles
+#### H4
+
+##### H5
+
+###### H6
 
 ## Blockquote
 

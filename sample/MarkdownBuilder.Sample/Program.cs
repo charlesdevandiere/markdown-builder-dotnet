@@ -10,12 +10,12 @@ namespace MarkdownBuilder.Sample
         {
             IMarkdownDocument document = new MarkdownDocument();
 
-            document.Append(new MarkdownTitle("Document", 1));
+            document.Append(new MarkdownHeader("Document", 1));
 
-            document.Append(new MarkdownTitle("Paragraph", 2));
+            document.Append(new MarkdownHeader("Paragraph", 2));
             document.Append(new MarkdownParagraph("Text"));
 
-            document.Append(new MarkdownTitle("List", 2));
+            document.Append(new MarkdownHeader("List", 2));
             document.Append(
                 new MarkdownList(
                     new MarkdownTextListItem("One"),
@@ -26,14 +26,14 @@ namespace MarkdownBuilder.Sample
                     )
                 ));
 
-            document.Append(new MarkdownTitle("Ordered list", 2));
+            document.Append(new MarkdownHeader("Ordered list", 2));
             document.Append(
                 new MarkdownOrderedList(
                     new MarkdownTextListItem("One"),
                     new MarkdownTextListItem("Two")
                 ));
 
-            document.Append(new MarkdownTitle("Check list", 2));
+            document.Append(new MarkdownHeader("Check list", 2));
             document.Append(
                 new MarkdownList(
                     new MarkdownCheckListItem(true, "Done"),
@@ -43,51 +43,58 @@ namespace MarkdownBuilder.Sample
                     )
                 ));
 
-            document.Append(new MarkdownTitle("Table", 2));
+            document.Append(new MarkdownHeader("Table", 2));
             document.Append(
                 new MarkdownTable(
                     new MarkdownTableHeader(
-                        new MarkdownTableHeaderCell[] { new MarkdownTableHeaderCell("Header"), new MarkdownTableHeaderCell("Header") }),
-                    new MarkdownTableRow[] {
-                        new MarkdownTableRow(new MarkdownText("cell"), new MarkdownText("cell")),
-                        new MarkdownTableRow(new MarkdownText("cell"), new MarkdownText("cell"))
+                        new MarkdownTableHeaderCell[]
+                        {
+                            new MarkdownTableHeaderCell("Name"),
+                            new MarkdownTableHeaderCell("Age", MarkdownTableTextAlignment.Right)
+                        }),
+                    new MarkdownTableRow[]
+                    {
+                        new MarkdownTableRow("John", "27"),
+                        new MarkdownTableRow("Xavier", "42")
                     }
                 ));
 
-            document.Append(new MarkdownTitle("Code", 2));
-            document.Append(new MarkdownCode("csharp", "Console.Write(document);"));
+            document.Append(new MarkdownHeader("Code", 2));
+            document.Append(new MarkdownCode("csharp", "Console.Write(\"Hello World!\");"));
 
-            document.Append(new MarkdownTitle("Titles", 2));
-            document.Append(new MarkdownTitle("Titles", 3));
-            document.Append(new MarkdownTitle("Titles", 4));
-            document.Append(new MarkdownTitle("Titles", 5));
-            document.Append(new MarkdownTitle("Titles", 6));
+            document.Append(new MarkdownHeader("Headers", 2));
+            document.Append(new MarkdownHeader("H1", 1));
+            document.Append(new MarkdownHeader("H2", 2));
+            document.Append(new MarkdownHeader("H3", 3));
+            document.Append(new MarkdownHeader("H4", 4));
+            document.Append(new MarkdownHeader("H5", 5));
+            document.Append(new MarkdownHeader("H6", 6));
 
-            document.Append(new MarkdownTitle("Blockquote", 2));
+            document.Append(new MarkdownHeader("Blockquote", 2));
             document.Append(new MarkdownBlockquote("Blockquote"));
 
-            document.Append(new MarkdownTitle("HorizontalRule", 2));
+            document.Append(new MarkdownHeader("HorizontalRule", 2));
             document.Append(new MarkdownHorizontalRule());
 
-            document.Append(new MarkdownTitle("Image", 2));
+            document.Append(new MarkdownHeader("Image", 2));
             document.Append(new MarkdownParagraph(new MarkdownImage("GitHub", "https://github.githubassets.com/apple-touch-icon-180x180.png")));
 
-            document.Append(new MarkdownTitle("Emoji", 2));
+            document.Append(new MarkdownHeader("Emoji", 2));
             document.Append(new MarkdownParagraph(new MarkdownEmoji("thumbsup")));
 
-            document.Append(new MarkdownTitle("Emphasis", 2));
+            document.Append(new MarkdownHeader("Emphasis", 2));
             document.Append(new MarkdownParagraph(new MarkdownEmphasis("Emphasis")));
 
-            document.Append(new MarkdownTitle("StrongEmphasis", 2));
+            document.Append(new MarkdownHeader("StrongEmphasis", 2));
             document.Append(new MarkdownParagraph(new MarkdownStrongEmphasis("Strong emphasis")));
 
-            document.Append(new MarkdownTitle("Strikethrough", 2));
+            document.Append(new MarkdownHeader("Strikethrough", 2));
             document.Append(new MarkdownParagraph(new MarkdownStrikethrough("Strikethrough")));
 
-            document.Append(new MarkdownTitle("Inline code", 2));
+            document.Append(new MarkdownHeader("Inline code", 2));
             document.Append(new MarkdownParagraph(new MarkdownInlineCode("code")));
 
-            document.Append(new MarkdownTitle("Link", 2));
+            document.Append(new MarkdownHeader("Link", 2));
             document.Append(new MarkdownParagraph(new MarkdownLink("markdown-builder-dotnet", "https://github.com/charlesdevandiere/markdown-builder-dotnet")));
 
             Console.Write(document);

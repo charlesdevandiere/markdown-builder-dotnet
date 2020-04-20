@@ -1,0 +1,963 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MarkdownBuilder</name>
+    </assembly>
+    <members>
+        <member name="T:Markdown.IMarkdownBlockElement">
+            <summary>
+            Markdown block element interface.
+            </summary>
+        </member>
+        <member name="M:Markdown.IMarkdownBlockElement.ToString">
+            <summary>
+            Returns a string that represents the current markdown block element.
+            </summary>
+            <returns>A string that represents the current markdown block element.</returns>
+        </member>
+        <member name="T:Markdown.IMarkdownDocument">
+            <summary>
+            Markdown document.
+            </summary>
+        </member>
+        <member name="P:Markdown.IMarkdownDocument.Capacity">
+            <summary>
+            Gets or sets the maximum number of markdown block elements that can be contained in the memory allocated by the current instance.
+            </summary>
+            <value>The maximum number of markdown block elements that can be contained in the memory allocated by the current instance.</value>
+        </member>
+        <member name="P:Markdown.IMarkdownDocument.Length">
+            <summary>
+            Gets the length of the current <see cref="T:Markdown.IMarkdownDocument" /> object.
+            </summary>
+            <value>The length of this instance.</value>
+        </member>
+        <member name="M:Markdown.IMarkdownDocument.Clear">
+            <summary>Clears this markdown document.</summary>
+            <returns>A reference to this instance after the clean operation has completed.</returns>
+        </member>
+        <member name="M:Markdown.IMarkdownDocument.Append(Markdown.IMarkdownBlockElement)">
+            <summary>Appends the specified block element.</summary>
+            <param name="blockElement">The block element.</param>
+            <returns>A reference to this instance after the append operation has completed.</returns>
+        </member>
+        <member name="M:Markdown.IMarkdownDocument.Remove(System.Int32)">
+            <summary>Removes the specified block element at index.</summary>
+            <param name="index">The block element index.</param>
+            <returns>A reference to this instance after the excise operation has completed.</returns>
+        </member>
+        <member name="M:Markdown.IMarkdownDocument.Remove(Markdown.IMarkdownBlockElement)">
+            <summary>Remove the specified block element.</summary>
+            <param name="blockElement">The block element.</param>
+            <returns>A reference to this instance after the excise operation has completed.</returns>
+        </member>
+        <member name="M:Markdown.IMarkdownDocument.ElementAt(System.Int32)">
+            <summary>Returns the specified block element at index.</summary>
+            <param name="index">The block element index.</param>
+            <returns>The block element.</returns>
+        </member>
+        <member name="M:Markdown.IMarkdownDocument.IndexOf(Markdown.IMarkdownBlockElement)">
+            <summary>Returns the specified block element index.</summary>
+            <param name="blockElement">The block element.</param>
+            <returns>The block element index.</returns>
+        </member>
+        <member name="M:Markdown.IMarkdownDocument.Replace(Markdown.IMarkdownBlockElement,Markdown.IMarkdownBlockElement)">
+            <summary>Replaces all occurrences of a specified block element in this instance with another specified block element.</summary>
+            <param name="oldBlockElement">The block element to replace.</param>
+            <param name="newBlockElement">The block element that replaces <c>oldBlockElement</c>.</param>
+            <returns>A reference to this instance with all instances of <c>oldBlockElement</c> replaced by <c>newBlockElement</c>.</returns>
+        </member>
+        <member name="M:Markdown.IMarkdownDocument.Insert(System.Int32,Markdown.IMarkdownBlockElement)">
+            <summary>Inserts the specified block element into this instance at a specified position.</summary>
+            <param name="index">The position in this instance where insertion begins.</param>
+            <param name="blockElement">The block element to insert.</param>
+            <returns>A reference to this instance after the insert operation has completed.</returns>
+        </member>
+        <member name="M:Markdown.IMarkdownDocument.ToString">
+            <summary>
+            Returns a string that represents the current markdown document.
+            </summary>
+            <returns>A string that represents the current markdown document.</returns>
+        </member>
+        <member name="T:Markdown.IMarkdownListItem">
+            <summary>
+            Markdown list item interface.
+            </summary>
+        </member>
+        <member name="T:Markdown.MarkdownBlockquote">
+            <summary>
+            Markdown blockquote.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownBlockquote.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:Markdown.MarkdownBlockquote" /> class.
+            </summary>
+            <param name="text">The blockquote text.</param>
+        </member>
+        <member name="M:Markdown.MarkdownBlockquote.#ctor(Markdown.MarkdownInlineElement)">
+            <summary>
+            Initializes a new instance of <see cref="T:Markdown.MarkdownBlockquote" /> class.
+            </summary>
+            <param name="inlineElement">The blockquote text as markdown inline element.</param>
+        </member>
+        <member name="M:Markdown.MarkdownBlockquote.ToString">
+            <summary>
+            Returns a string that represents the current markdown blockquote.
+            The blockquote text is trimed.
+            </summary>
+            <returns>A string that represents the current markdown blockquote.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownCheckListItem">
+            <summary>
+            Markdown check list item.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownCheckListItem.Checked">
+            <summary>
+            Gets or sets the item state.
+            </summary>
+            <value><c>true</c> if the item is checked; otherwise, <c>false</c>. The default is <c>false</c>.</value>
+        </member>
+        <member name="M:Markdown.MarkdownCheckListItem.#ctor(System.Boolean,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownCheckListItem" /> class.
+            </summary>
+            <param name="checked">The item state.</param>
+            <param name="text">The item text.</param>
+        </member>
+        <member name="M:Markdown.MarkdownCheckListItem.#ctor(System.Boolean,Markdown.MarkdownInlineElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownCheckListItem" /> class.
+            </summary>
+            <param name="checked">The item state.</param>
+            <param name="element">The item text as markdown inline element.</param>
+        </member>
+        <member name="M:Markdown.MarkdownCheckListItem.ToString">
+            <summary>
+            Returns a string that represents the current markdown check list item.
+            The check list item text is trimed.
+            </summary>
+            <returns>A string that represents the current markdown check list item.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownCode">
+            <summary>
+            Markdown code.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownCode.Language">
+            <summary>
+            Gets or sets the code language.
+            </summary>
+            <value>Code language.</value>
+        </member>
+        <member name="M:Markdown.MarkdownCode.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownCode" /> class.
+            </summary>
+            <param name="language">The code language.</param>
+            <param name="code">The code.</param>
+        </member>
+        <member name="M:Markdown.MarkdownCode.#ctor(System.String,Markdown.MarkdownInlineElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownCode" /> class.
+            </summary>
+            <param name="language">The code language.</param>
+            <param name="inlineElement">The code as markdown inline element.</param>
+        </member>
+        <member name="M:Markdown.MarkdownCode.ToString">
+            <summary>
+            Returns a string that represents the current markdown code.
+            </summary>
+            <returns>A string that represents the current markdown code.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownDocument">
+            <summary>
+            Markdown document.
+            </summary>
+            <seealso cref="T:Markdown.IMarkdownDocument" />
+        </member>
+        <member name="P:Markdown.MarkdownDocument.Capacity">
+            <summary>
+            Gets or sets the maximum number of markdown block elements that can be contained in the memory allocated by the current instance.
+            </summary>
+            <value>The maximum number of markdown block elements that can be contained in the memory allocated by the current instance.</value>
+        </member>
+        <member name="P:Markdown.MarkdownDocument.Length">
+            <summary>
+            Gets the length of the current <see cref="T:Markdown.IMarkdownDocument" /> object.
+            </summary>
+            <value>The length of this instance.</value>
+        </member>
+        <member name="M:Markdown.MarkdownDocument.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownDocument" /> class.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownDocument.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownDocument" /> class.
+            </summary>
+            <param name="capacity">The block elements capacity.</param>
+        </member>
+        <member name="M:Markdown.MarkdownDocument.Append(Markdown.IMarkdownBlockElement)">
+            <summary>Appends the specified block element.</summary>
+            <param name="blockElement">The block element.</param>
+            <returns>A reference to this instance after the append operation has completed.</returns>
+        </member>
+        <member name="M:Markdown.MarkdownDocument.Clear">
+            <summary>Clears this markdown document.</summary>
+            <returns>A reference to this instance after the clean operation has completed.</returns>
+        </member>
+        <member name="M:Markdown.MarkdownDocument.ElementAt(System.Int32)">
+            <summary>Returns the specified block element at index.</summary>
+            <param name="index">The block element index.</param>
+            <returns>The block element.</returns>
+        </member>
+        <member name="M:Markdown.MarkdownDocument.IndexOf(Markdown.IMarkdownBlockElement)">
+            <summary>Returns the specified block element index.</summary>
+            <param name="blockElement">The block element.</param>
+            <returns>The block element index.</returns>
+        </member>
+        <member name="M:Markdown.MarkdownDocument.Insert(System.Int32,Markdown.IMarkdownBlockElement)">
+            <summary>Inserts the specified block element into this instance at a specified position.</summary>
+            <param name="index">The position in this instance where insertion begins.</param>
+            <param name="blockElement">The block element to insert.</param>
+            <returns>A reference to this instance after the insert operation has completed.</returns>
+        </member>
+        <member name="M:Markdown.MarkdownDocument.Remove(System.Int32)">
+            <summary>Removes the specified block element at index.</summary>
+            <param name="index">The block element index.</param>
+            <returns>A reference to this instance after the excise operation has completed.</returns>
+        </member>
+        <member name="M:Markdown.MarkdownDocument.Remove(Markdown.IMarkdownBlockElement)">
+            <summary>Remove the specified block element.</summary>
+            <param name="blockElement">The block element.</param>
+            <returns>A reference to this instance after the excise operation has completed.</returns>
+        </member>
+        <member name="M:Markdown.MarkdownDocument.Replace(Markdown.IMarkdownBlockElement,Markdown.IMarkdownBlockElement)">
+            <summary>Replaces all occurrences of a specified block element in this instance with another specified block element.</summary>
+            <param name="oldBlockElement">The block element to replace.</param>
+            <param name="newBlockElement">The block element that replaces <c>oldBlockElement</c>.</param>
+            <returns>A reference to this instance with all instances of <c>oldBlockElement</c> replaced by <c>newBlockElement</c>.</returns>
+        </member>
+        <member name="M:Markdown.MarkdownDocument.ToString">
+            <summary>
+            Returns a string that represents the current markdown document.
+            </summary>
+            <returns>A string that represents the current markdown document.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownEmoji">
+            <summary>
+            Markdown emoji.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownEmoji.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownEmoji" /> class.
+            </summary>
+            <param name="code">The emoji code.</param>
+        </member>
+        <member name="M:Markdown.MarkdownEmoji.ToString">
+            <summary>
+            Returns a string that represents the current markdown emoji code.
+            </summary>
+            <returns>A string that represents the current markdown emoji code.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownEmphasis">
+            <summary>
+            Markdown emphasis.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownEmphasis.Char">
+            <summary>
+            Gets or sets the emphasis character.
+            </summary>
+            <value>Emphasis character.</value>
+        </member>
+        <member name="M:Markdown.MarkdownEmphasis.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownEmphasis" /> class.
+            </summary>
+            <param name="text">The emphasis text.</param>
+        </member>
+        <member name="M:Markdown.MarkdownEmphasis.#ctor(System.String,System.Char)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownEmphasis" /> class.
+            </summary>
+            <param name="text">The emphasis text.</param>
+            <param name="char">The emphasis character.</param>
+        </member>
+        <member name="M:Markdown.MarkdownEmphasis.#ctor(Markdown.MarkdownInlineElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownEmphasis" /> class.
+            </summary>
+            <param name="inlineElement">The emphasis text as markdown inline element.</param>
+        </member>
+        <member name="M:Markdown.MarkdownEmphasis.#ctor(Markdown.MarkdownInlineElement,System.Char)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownEmphasis" /> class.
+            </summary>
+            <param name="inlineElement">The emphasis text as markdown inline element.</param>
+            <param name="char">The emphasis character.</param>
+        </member>
+        <member name="M:Markdown.MarkdownEmphasis.ToString">
+            <summary>
+            Returns a string that represents the current markdown emphasis.
+            </summary>
+            <returns>A string that represents the current markdown emphasis.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownHeader">
+            <summary>
+            Markdown header.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownHeader.Level">
+            <summary>
+            Gets or sets the header level.
+            </summary>
+            <value>The header level.</value>
+        </member>
+        <member name="M:Markdown.MarkdownHeader.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownHeader" /> class.
+            </summary>
+            <param name="header">The header text.</param>
+            <param name="level">The header level.</param>
+        </member>
+        <member name="M:Markdown.MarkdownHeader.#ctor(Markdown.MarkdownInlineElement,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownHeader" /> class.
+            </summary>
+            <param name="inlineElement">The header text as markdown inline element.</param>
+            <param name="level">The header level.</param>
+        </member>
+        <member name="M:Markdown.MarkdownHeader.ToString">
+            <summary>
+            Returns a string that represents the current markdown header.
+            </summary>
+            <returns>A string that represents the current markdown header.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownHorizontalRule">
+            <summary>
+            Markdown horizontal rule.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownHorizontalRule.Char">
+            <summary>
+            Gets or sets the horizontal rule character.
+            </summary>
+            <value>Horizontal rule character.</value>
+        </member>
+        <member name="M:Markdown.MarkdownHorizontalRule.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownHorizontalRule" /> class.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownHorizontalRule.#ctor(System.Char)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownHorizontalRule" /> class.
+            </summary>
+            <param name="char">The emphasis character.</param>
+        </member>
+        <member name="M:Markdown.MarkdownHorizontalRule.ToString">
+            <summary>
+            Returns a string that represents the current markdown horizontal rule.
+            </summary>
+            <returns>A string that represents the current markdown horizontal rule.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownImage">
+            <summary>
+            Markdown image.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownImage.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownImage" /> class.
+            </summary>
+            <param name="altText">The alternative text.</param>
+            <param name="imageUrl">The image URL.</param>
+        </member>
+        <member name="M:Markdown.MarkdownImage.ToString">
+            <summary>
+            Returns a string that represents the current markdown image.
+            </summary>
+            <returns>A string that represents the current markdown image.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownInlineCode">
+            <summary>
+            Markdown inline code.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownInlineCode.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownInlineCode" /> class.
+            </summary>
+            <param name="code">The code.</param>
+        </member>
+        <member name="M:Markdown.MarkdownInlineCode.#ctor(Markdown.MarkdownInlineElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownInlineCode" /> class.
+            </summary>
+            <param name="inlineElement">The code as markdown inline element.</param>
+        </member>
+        <member name="M:Markdown.MarkdownInlineCode.ToString">
+            <summary>
+            Returns a string that represents the current markdown code.
+            </summary>
+            <returns>A string that represents the current markdown code.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownInlineElement">
+            <summary>
+            Markdown inline element.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownInlineElement.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownInlineElement" /> class.
+            </summary>
+            <param name="text">The inline element text.</param>
+        </member>
+        <member name="M:Markdown.MarkdownInlineElement.#ctor(Markdown.MarkdownInlineElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownInlineElement" /> class.
+            </summary>
+            <param name="element">The inline element text as markdown inline element.</param>
+        </member>
+        <member name="T:Markdown.MarkdownLink">
+            <summary>
+            Markdown link.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownLink.Url">
+            <summary>
+            Gets or sets the link URL.
+            </summary>
+            <value>Link URL.</value>
+        </member>
+        <member name="M:Markdown.MarkdownLink.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownLink" /> class.
+            </summary>
+            <param name="text">The link text.</param>
+            <param name="url">The link URL.</param>
+        </member>
+        <member name="M:Markdown.MarkdownLink.#ctor(Markdown.MarkdownInlineElement,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownLink" /> class.
+            </summary>
+            <param name="inlineElement">The link text as markdown inline element.</param>
+            <param name="url">The link URL.</param>
+        </member>
+        <member name="M:Markdown.MarkdownLink.ToString">
+            <summary>
+            Returns a string that represents the current markdown link.
+            </summary>
+            <returns>A string that represents the current markdown link.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownList">
+            <summary>
+            Markdown list.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownList.Char">
+            <summary>
+            Gets or sets the bullet point character.
+            </summary>
+            <value>The bullet point character.</value>
+        </member>
+        <member name="P:Markdown.MarkdownList.ListItems">
+            <summary>
+            Gets the list items.
+            </summary>
+            <value>List items.</value>
+        </member>
+        <member name="M:Markdown.MarkdownList.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownList" /> class.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownList.#ctor(System.Char)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownList" /> class.
+            </summary>
+            <param name="char">The bullet point character.</param>
+        </member>
+        <member name="M:Markdown.MarkdownList.#ctor(Markdown.IMarkdownListItem[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownList" /> class.
+            </summary>
+            <param name="listItems">The list items.</param>
+        </member>
+        <member name="M:Markdown.MarkdownList.#ctor(System.Collections.Generic.IEnumerable{Markdown.IMarkdownListItem})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownList" /> class.
+            </summary>
+            <param name="listItems">The list items.</param>
+        </member>
+        <member name="M:Markdown.MarkdownList.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownList" /> class.
+            </summary>
+            <param name="listItems">The list items.</param>
+        </member>
+        <member name="M:Markdown.MarkdownList.#ctor(System.Char,Markdown.IMarkdownListItem[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownList" /> class.
+            </summary>
+            <param name="char">The bullet point character.</param>
+            <param name="listItems">The list items.</param>
+        </member>
+        <member name="M:Markdown.MarkdownList.#ctor(System.Char,System.Collections.Generic.IEnumerable{Markdown.IMarkdownListItem})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownList" /> class.
+            </summary>
+            <param name="char">The bullet point character.</param>
+            <param name="listItems">The list items.</param>
+        </member>
+        <member name="M:Markdown.MarkdownList.#ctor(System.Char,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownList" /> class.
+            </summary>
+            <param name="char">The bullet point character.</param>
+            <param name="listItems">The list items.</param>
+        </member>
+        <member name="M:Markdown.MarkdownList.ToString">
+            <summary>
+            Returns a string that represents the current markdown list.
+            </summary>
+            <returns>A string that represents the current markdown list.</returns>
+        </member>
+        <member name="M:Markdown.MarkdownList.PrintBulletPoint(System.Int32)">
+            <summary>
+            Prints the bullet point.
+            </summary>
+            <param name="index">The index of the bullet point.</param>
+            <returns>The string represent the bullet point.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownOrderedList">
+            <summary>
+            Markdown ordered list.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownOrderedList.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownOrderedList" /> class.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownOrderedList.#ctor(Markdown.MarkdownTextListItem[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownOrderedList" /> class.
+            </summary>
+            <param name="listItems">The list items.</param>
+        </member>
+        <member name="M:Markdown.MarkdownOrderedList.#ctor(System.Collections.Generic.IEnumerable{Markdown.MarkdownTextListItem})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownOrderedList" /> class.
+            </summary>
+            <param name="listItems">The list items.</param>
+        </member>
+        <member name="M:Markdown.MarkdownOrderedList.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownOrderedList" /> class.
+            </summary>
+            <param name="listItems">The list items.</param>
+        </member>
+        <member name="M:Markdown.MarkdownOrderedList.PrintBulletPoint(System.Int32)">
+            <summary>
+            Prints the bullet point.
+            </summary>
+            <param name="index">The index of the bullet point.</param>
+            <returns>The string represent the bullet point.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownParagraph">
+            <summary>
+            Markdown paragraph.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownParagraph.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownParagraph" /> class.
+            </summary>
+            <param name="text">The paragraph text.</param>
+        </member>
+        <member name="M:Markdown.MarkdownParagraph.#ctor(Markdown.MarkdownInlineElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownParagraph" /> class.
+            </summary>
+            <param name="inlineElement">The paragraph text as markdown inline element.</param>
+        </member>
+        <member name="M:Markdown.MarkdownParagraph.ToString">
+            <summary>
+            Returns a string that represents the current markdown paragraph.
+            The paragraph text is trimed.
+            </summary>
+            <returns>A string that represents the current markdown paragraph.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownStrikethrough">
+            <summary>
+            Markdown strikethrough.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownStrikethrough.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownStrikethrough" /> class.
+            </summary>
+            <param name="text">The strikethrough text.</param>
+        </member>
+        <member name="M:Markdown.MarkdownStrikethrough.#ctor(Markdown.MarkdownInlineElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownStrikethrough" /> class.
+            </summary>
+            <param name="inlineElement">The strikethrough text as markdown inline element.</param>
+        </member>
+        <member name="M:Markdown.MarkdownStrikethrough.ToString">
+            <summary>
+            Returns a string that represents the current markdown strikethrough.
+            </summary>
+            <returns>A string that represents the current markdown strikethrough.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownStrongEmphasis">
+            <summary>
+            Markdown strong emphasis.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownStrongEmphasis.Char">
+            <summary>
+            Gets or sets the strong emphasis character.
+            </summary>
+            <value>Strong emphasis character.</value>
+        </member>
+        <member name="M:Markdown.MarkdownStrongEmphasis.#ctor(System.String,System.Char)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownStrongEmphasis" /> class.
+            </summary>
+            <param name="text">The strong emphasis text.</param>
+            <param name="char">The strong emphasis character. Default is '*'.</param>
+        </member>
+        <member name="M:Markdown.MarkdownStrongEmphasis.#ctor(Markdown.MarkdownInlineElement,System.Char)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownStrongEmphasis" /> class.
+            </summary>
+            <param name="inlineElement">The strong emphasis text as markdown inline element.</param>
+            <param name="char">The strong emphasis character. Default is '*'.</param>
+        </member>
+        <member name="M:Markdown.MarkdownStrongEmphasis.ToString">
+            <summary>
+            Returns a string that represents the current markdown strong emphasis.
+            </summary>
+            <returns>A string that represents the current markdown strong emphasis.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownTable">
+            <summary>
+            Markdown table.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownTable.Header">
+            <summary>Gets the header.</summary>
+            <value>The header.</value>
+        </member>
+        <member name="P:Markdown.MarkdownTable.Rows">
+            <summary>Gets the rows.</summary>
+            <value>The rows.</value>
+        </member>
+        <member name="P:Markdown.MarkdownTable.ColumnCount">
+            <summary>
+            Gets the number of columns.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownTable.RowsCount">
+            <summary>
+            Gets the number of rows.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownTable.RowsCapacity">
+            <summary>
+            Gets or sets the rows capacity.
+            </summary>
+            <value>The rows capacity.</value>
+        </member>
+        <member name="M:Markdown.MarkdownTable.#ctor(Markdown.MarkdownTableHeader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTable"/> class.
+            </summary>
+            <param name="header">The header.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTable.#ctor(Markdown.MarkdownTableHeader,System.Collections.Generic.IEnumerable{Markdown.MarkdownTableRow})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTable"/> class.
+            </summary>
+            <param name="header">The header.</param>
+            <param name="rows">The rows.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTable.#ctor(Markdown.MarkdownTableHeader,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTable"/> class.
+            </summary>
+            <param name="header">The header.</param>
+            <param name="capacity">The row capacity.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTable.AddRow(Markdown.MarkdownTableRow)">
+            <summary>
+            Adds the specific row at the end of the table.
+            </summary>
+            <param name="row">The row to be added.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTable.AddRowRange(System.Collections.Generic.IEnumerable{Markdown.MarkdownTableRow})">
+            <summary>
+            Adds the specific rows at the end of the table.
+            </summary>
+            <param name="rows">The rows to be added.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTable.GetRowAt(System.Int32)">
+            <summary>
+            Gets the row at the specific index.
+            </summary>
+            <param name="index">The row index.</param>
+            <returns>The row</returns>
+        </member>
+        <member name="M:Markdown.MarkdownTable.RemoveRowAt(System.Int32)">
+            <summary>
+            Remove the row at the specific index.
+            </summary>
+            <param name="index">The row index.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTable.ToString">
+            <summary>
+            Returns a string that represents the current markdown table.
+            </summary>
+            <returns>A string that represents the current markdown table.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownTableHeader">
+            <summary>
+            Markdown table header.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownTableHeader.Cells">
+            <summary>Gets the cells.</summary>
+            <value>The cells.</value>
+        </member>
+        <member name="M:Markdown.MarkdownTableHeader.#ctor(Markdown.MarkdownTableHeaderCell[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTableHeader"/> class.
+            </summary>
+            <param name="cells">The cells.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTableHeader.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTableHeader"/> class.
+            </summary>
+            <param name="capacity">The header cell capacity.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTableHeader.ToString">
+            <summary>
+            Returns a string that represents the current markdown table header.
+            </summary>
+            <returns>A string that represents the current markdown table header.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownTableHeaderCell">
+            <summary>
+            Markdown table header cell.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownTableHeaderCell.ColumnTextAlignment">
+            <summary>
+            Gets or sets the column text alignment.
+            </summary>
+            <value>The column text alignment.</value>
+        </member>
+        <member name="M:Markdown.MarkdownTableHeaderCell.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTableHeaderCell" /> class.
+            </summary>
+            <param name="text">The header cell text.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTableHeaderCell.#ctor(System.String,Markdown.MarkdownTableTextAlignment)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTableHeaderCell" /> class.
+            </summary>
+            <param name="text">The header cell text.</param>
+            <param name="textAlignment">The column text alignment.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTableHeaderCell.#ctor(Markdown.MarkdownInlineElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTableHeaderCell" /> class.
+            </summary>
+            <param name="inlineElement">The header cell text as markdown inline element.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTableHeaderCell.#ctor(Markdown.MarkdownInlineElement,Markdown.MarkdownTableTextAlignment)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTableHeaderCell" /> class.
+            </summary>
+            <param name="inlineElement">The header cell text as markdown inline element.</param>
+            <param name="textAlignment">The column text alignment.</param>
+        </member>
+        <member name="T:Markdown.MarkdownTableRow">
+            <summary>
+            Markdown table row.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownTableRow.Cells">
+            <summary>Gets the cells.</summary>
+            <value>The cells.</value>
+        </member>
+        <member name="M:Markdown.MarkdownTableRow.#ctor(System.Collections.Generic.IEnumerable{Markdown.MarkdownInlineElement})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTableRow"/> class.
+            </summary>
+            <param name="cells">The cells.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTableRow.#ctor(Markdown.MarkdownInlineElement[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTableRow"/> class.
+            </summary>
+            <param name="cells">The cells.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTableRow.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTableRow"/> class.
+            </summary>
+            <param name="cells">The cells.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTableRow.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTableRow"/> class.
+            </summary>
+            <param name="cells">The cells.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTableRow.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTableRow"/> class.
+            </summary>
+            <param name="capacity">The capacity.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTableRow.ToString">
+            <summary>
+            Returns a string that represents the current markdown table row.
+            </summary>
+            <returns>A string that represents the current markdown table row.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownTableTextAlignment">
+            <summary>
+            Markdown table text alignment.
+            </summary>
+        </member>
+        <member name="F:Markdown.MarkdownTableTextAlignment.Default">
+            <summary>Default alignment (left).</summary>
+        </member>
+        <member name="F:Markdown.MarkdownTableTextAlignment.Left">
+            <summary>Left alignment.</summary>
+        </member>
+        <member name="F:Markdown.MarkdownTableTextAlignment.Center">
+            <summary>Center alignment.</summary>
+        </member>
+        <member name="F:Markdown.MarkdownTableTextAlignment.Right">
+            <summary>Right alignment.</summary>
+        </member>
+        <member name="T:Markdown.MarkdownTableTextAlignmentExtensions">
+            <summary>
+            Markdown table text alignment extensions.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownTableTextAlignmentExtensions.Print(Markdown.MarkdownTableTextAlignment)">
+            <summary>Prints the specified text alignment.</summary>
+            <param name="textAlignment">The text alignment.</param>
+            <returns>A string that represents the current markdown table text alignment.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownText">
+            <summary>
+            Markdown text.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownText.Text">
+            <summary>
+            Gets or sets the text.
+            </summary>
+            <value>The text or a string that represents the markdown text.</value>
+        </member>
+        <member name="M:Markdown.MarkdownText.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownText" /> class.
+            </summary>
+            <param name="text">The text.</param>
+        </member>
+        <member name="M:Markdown.MarkdownText.#ctor(Markdown.MarkdownInlineElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownText" /> class.
+            </summary>
+            <param name="inlineElement">The text as markdown inline element.</param>
+        </member>
+        <member name="M:Markdown.MarkdownText.Append(System.String)">
+            <summary>
+            Appends the specified text to this instance.
+            </summary>
+            <param name="text">The text to append.</param>
+            <returns>The markdown text.</returns>
+        </member>
+        <member name="M:Markdown.MarkdownText.Append(Markdown.MarkdownInlineElement)">
+            <summary>
+            Appends the specified markdown inline element to this instance.
+            </summary>
+            <param name="inlineElement">The markdown inline element to append.</param>
+            <returns>The markdown text.</returns>
+        </member>
+        <member name="M:Markdown.MarkdownText.ToString">
+            <summary>
+            Returns a string that represents the current markdown text.
+            </summary>
+            <returns>A string that represents the current markdown text.</returns>
+        </member>
+        <member name="T:Markdown.MarkdownTextElement">
+            <summary>
+            Markdown text element.
+            </summary>
+        </member>
+        <member name="P:Markdown.MarkdownTextElement.InlineElement">
+            <summary>
+            Gets or sets the markdown inline element.
+            </summary>
+            <value>The markdown inline element.</value>
+        </member>
+        <member name="P:Markdown.MarkdownTextElement.Text">
+            <summary>
+            Gets or sets the text.
+            </summary>
+            <value>The text or a string that represents the markdown inline element.</value>
+        </member>
+        <member name="M:Markdown.MarkdownTextElement.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTextElement" /> class.
+            </summary>
+            <param name="text">The text.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTextElement.#ctor(Markdown.MarkdownInlineElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTextElement" /> class.
+            </summary>
+            <param name="inlineElement">The text as markdown inline element.</param>
+        </member>
+        <member name="T:Markdown.MarkdownTextListItem">
+            <summary>
+            Markdown text list item.
+            </summary>
+        </member>
+        <member name="M:Markdown.MarkdownTextListItem.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTextListItem" /> class.
+            </summary>
+            <param name="text">The list item text.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTextListItem.#ctor(Markdown.MarkdownInlineElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Markdown.MarkdownTextListItem" /> class.
+            </summary>
+            <param name="inlineElement">The list item text as markdown inline element.</param>
+        </member>
+        <member name="M:Markdown.MarkdownTextListItem.ToString">
+            <summary>
+            Returns a string that represents the current markdown text list item.
+            </summary>
+            <returns>A string that represents the current markdown text list item.</returns>
+        </member>
+    </members>
+</doc>
