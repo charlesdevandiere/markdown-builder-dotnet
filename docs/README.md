@@ -1,10 +1,10 @@
 # GraphQL Query Builder .NET
 
-![logo](https://raw.githubusercontent.com/charlesdevandiere/markdown-query-builder/master/logo.png)
+![logo](https://raw.githubusercontent.com/charlesdevandiere/markdown-builder-dotnet/master/logo.png)
 
 Markdown builder for .NET Core.
 
-[![Build Status](https://dev.azure.com/charlesdevandiere/charlesdevandiere/_apis/build/status/charlesdevandiere.markdown-query-builder?branchName=master)](https://dev.azure.com/charlesdevandiere/charlesdevandiere/_build/latest?definitionId=4&branchName=master)
+[![Build Status](https://dev.azure.com/charlesdevandiere/charlesdevandiere/_apis/build/status/charlesdevandiere.markdown-builder-dotnet?branchName=master)](https://dev.azure.com/charlesdevandiere/charlesdevandiere/_build/latest?definitionId=4&branchName=master)
 ![Coverage](https://img.shields.io/azure-devops/coverage/charlesdevandiere/charlesdevandiere/4/master)
 [![Nuget](https://img.shields.io/nuget/v/MarkdownBuilder.svg?color=blue&logo=nuget)](https://www.nuget.org/packages/MarkdownBuilder)
 [![Downloads](https://img.shields.io/nuget/dt/MarkdownBuilder.svg?logo=nuget)](https://www.nuget.org/packages/MarkdownBuilder)
