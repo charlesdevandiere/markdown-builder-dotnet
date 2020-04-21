@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Markdown;
 using Xunit;
 
@@ -166,6 +167,22 @@ namespace MarkdownBuiler.UnitTests
         public void TestConstructorInvalidCharAndStringArray()
         {
             Assert.Throws<ArgumentException>(() => new MarkdownList('a', "One", "Two"));
+        }
+
+        [Fact]
+        public void TestAddStringItem()
+        {
+            var list = new MarkdownList();
+            list.AddItem("item");
+            Assert.Equal("item", (list.ListItems.First() as MarkdownTextListItem).Text);
+        }
+
+        [Fact]
+        public void TestAddInlineElementItem()
+        {
+            var list = new MarkdownList();
+            list.AddItem(new MarkdownText("item"));
+            Assert.Equal("item", (list.ListItems.First() as MarkdownTextListItem).Text);
         }
 
         [Fact]

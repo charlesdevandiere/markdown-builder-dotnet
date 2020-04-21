@@ -93,6 +93,24 @@ namespace Markdown
         public MarkdownList(char @char, params string[] listItems) : this(@char, listItems.Select(li => new MarkdownTextListItem(li))) { }
 
         /// <summary>
+        /// Creates an item with the specified string value and adds this at the end of the items list.
+        /// </summary>
+        /// <param name="item">The item as string.</param>
+        public void AddItem(string item)
+        {
+            this.ListItems.Add(new MarkdownTextListItem(item));
+        }
+
+        /// <summary>
+        /// Creates an item with the specified markdown inline element and adds this at the end of the items list.
+        /// </summary>
+        /// <param name="item">The item as markdown inline element.</param>
+        public void AddItem(MarkdownInlineElement item)
+        {
+            this.ListItems.Add(new MarkdownTextListItem(item));
+        }
+
+        /// <summary>
         /// Returns a string that represents the current markdown list.
         /// </summary>
         /// <returns>A string that represents the current markdown list.</returns>

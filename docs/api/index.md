@@ -9,6 +9,7 @@
 - [`MarkdownCheckListItem`](Markdown/MarkdownCheckListItem)
 - [`MarkdownCode`](Markdown/MarkdownCode)
 - [`MarkdownDocument`](Markdown/MarkdownDocument)
+- [`MarkdownDocumentExtensions`](Markdown/MarkdownDocumentExtensions)
 - [`MarkdownEmoji`](Markdown/MarkdownEmoji)
 - [`MarkdownEmphasis`](Markdown/MarkdownEmphasis)
 - [`MarkdownHeader`](Markdown/MarkdownHeader)

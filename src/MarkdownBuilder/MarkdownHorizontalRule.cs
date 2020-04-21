@@ -36,7 +36,7 @@ namespace Markdown
         /// <summary>
         /// Initializes a new instance of the <see cref="MarkdownHorizontalRule" /> class.
         /// </summary>
-        /// <param name="char">The emphasis character.</param>
+        /// <param name="char">The horizontal rule character.</param>
         public MarkdownHorizontalRule(char @char)
         {
             this.Char = @char;
