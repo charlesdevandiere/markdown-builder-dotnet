@@ -9,7 +9,7 @@ Markdown builder for .NET Core.
 [![Nuget](https://img.shields.io/nuget/v/MarkdownBuilder.svg?color=blue&logo=nuget)](https://www.nuget.org/packages/MarkdownBuilder)
 [![Downloads](https://img.shields.io/nuget/dt/MarkdownBuilder.svg?logo=nuget)](https://www.nuget.org/packages/MarkdownBuilder)
 
-See sample [here](sample/MarkdownBuilder.Sample)
+See sample [here](https://github.com/charlesdevandiere/markdown-builder-dotnet/tree/master/sample/MarkdownBuilder.Sample)
 
 See API documentation [here](api)
 
