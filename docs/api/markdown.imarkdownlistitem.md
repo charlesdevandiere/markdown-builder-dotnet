@@ -1,6 +1,10 @@
+[`< Back`](./)
+
+---
+
 # IMarkdownListItem
 
-`Namespace: Markdown`
+Namespace: Markdown
 
 Markdown list item interface.
 
@@ -10,4 +14,4 @@ public interface IMarkdownListItem
 
 ---
 
-[`< Back`](../)
+[`< Back`](./)

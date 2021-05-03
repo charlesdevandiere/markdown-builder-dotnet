@@ -18,11 +18,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{11051361-88E1-4038-B802-C5AC81C709A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkdownBuiler.UnitTests", "tests\MarkdownBuiler.UnitTests\MarkdownBuiler.UnitTests.csproj", "{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkdownBuiler.UnitTests", "tests\MarkdownBuiler.UnitTests\MarkdownBuiler.UnitTests.csproj", "{1A0F31C7-7C47-4A3C-9580-E6B1B926794C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{17C2332E-A9BB-4613-933D-0F0245964D0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkdownBuilder.Sample", "sample\MarkdownBuilder.Sample\MarkdownBuilder.Sample.csproj", "{2CD32289-FB14-49E5-886B-77184AC1C21F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkdownBuilder.Sample", "sample\MarkdownBuilder.Sample\MarkdownBuilder.Sample.csproj", "{2CD32289-FB14-49E5-886B-77184AC1C21F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{00856650-8347-4DC4-95FC-5BBFD9F791BB}"
+	ProjectSection(SolutionItems) = preProject
+		.config\dotnet-tools.json = .config\dotnet-tools.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
