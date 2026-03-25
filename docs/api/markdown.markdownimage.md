@@ -12,7 +12,8 @@ Markdown image.
 public class MarkdownImage : MarkdownLink
 ```
 
-Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTextElement](./markdown.markdowntextelement) → [MarkdownInlineElement](./markdown.markdowninlineelement) → [MarkdownLink](./markdown.markdownlink) → [MarkdownImage](./markdown.markdownimage)
+Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTextElement](./markdown.markdowntextelement) → [MarkdownInlineElement](./markdown.markdowninlineelement) → [MarkdownLink](./markdown.markdownlink) → [MarkdownImage](./markdown.markdownimage)<br>
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute), [NullableAttribute](./system.runtime.compilerservices.nullableattribute)
 
 ## Properties
 
@@ -28,6 +29,19 @@ public string Url { get; set; }
 
 [String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
 Link URL.
+
+### **InlineElement**
+
+Gets or sets the markdown inline element.
+
+```csharp
+protected MarkdownInlineElement InlineElement { get; set; }
+```
+
+#### Property Value
+
+[MarkdownInlineElement](./markdown.markdowninlineelement)<br>
+The markdown inline element.
 
 ### **Text**
 

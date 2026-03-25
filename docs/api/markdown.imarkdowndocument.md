@@ -12,6 +12,8 @@ Markdown document.
 public interface IMarkdownDocument
 ```
 
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute)
+
 ## Properties
 
 ### **Capacity**
@@ -159,12 +161,12 @@ IMarkdownDocument Replace(IMarkdownBlockElement oldBlockElement, IMarkdownBlockE
 The block element to replace.
 
 `newBlockElement` [IMarkdownBlockElement](./markdown.imarkdownblockelement)<br>
-The block element that replaces oldBlockElement.
+The block element that replaces `oldBlockElement`.
 
 #### Returns
 
 [IMarkdownDocument](./markdown.imarkdowndocument)<br>
-A reference to this instance with all instances of oldBlockElement replaced by newBlockElement.
+A reference to this instance with all instances of `oldBlockElement` replaced by `newBlockElement`.
 
 ### **Insert(Int32, IMarkdownBlockElement)**
 

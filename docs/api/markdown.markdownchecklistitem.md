@@ -13,7 +13,8 @@ public class MarkdownCheckListItem : MarkdownTextListItem, IMarkdownListItem
 ```
 
 Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTextElement](./markdown.markdowntextelement) → [MarkdownTextListItem](./markdown.markdowntextlistitem) → [MarkdownCheckListItem](./markdown.markdownchecklistitem)<br>
-Implements [IMarkdownListItem](./markdown.imarkdownlistitem)
+Implements [IMarkdownListItem](./markdown.imarkdownlistitem)<br>
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute), [NullableAttribute](./system.runtime.compilerservices.nullableattribute)
 
 ## Properties
 
@@ -28,7 +29,20 @@ public bool Checked { get; set; }
 #### Property Value
 
 [Boolean](https://docs.microsoft.com/en-us/dotnet/api/system.boolean)<br>
-true if the item is checked; otherwise, false. The default is false.
+`true` if the item is checked; otherwise, `false`. The default is `false`.
+
+### **InlineElement**
+
+Gets or sets the markdown inline element.
+
+```csharp
+protected MarkdownInlineElement InlineElement { get; set; }
+```
+
+#### Property Value
+
+[MarkdownInlineElement](./markdown.markdowninlineelement)<br>
+The markdown inline element.
 
 ### **Text**
 

@@ -12,7 +12,8 @@ Markdown table header.
 public class MarkdownTableHeader
 ```
 
-Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTableHeader](./markdown.markdowntableheader)
+Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTableHeader](./markdown.markdowntableheader)<br>
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute), [NullableAttribute](./system.runtime.compilerservices.nullableattribute)
 
 ## Properties
 

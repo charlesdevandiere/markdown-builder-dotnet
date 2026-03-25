@@ -12,7 +12,8 @@ Markdown text.
 public class MarkdownText : MarkdownInlineElement
 ```
 
-Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTextElement](./markdown.markdowntextelement) → [MarkdownInlineElement](./markdown.markdowninlineelement) → [MarkdownText](./markdown.markdowntext)
+Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTextElement](./markdown.markdowntextelement) → [MarkdownInlineElement](./markdown.markdowninlineelement) → [MarkdownText](./markdown.markdowntext)<br>
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute), [NullableAttribute](./system.runtime.compilerservices.nullableattribute)
 
 ## Properties
 
@@ -28,6 +29,19 @@ public string Text { get; }
 
 [String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
 The text or a string that represents the markdown text.
+
+### **InlineElement**
+
+Gets or sets the markdown inline element.
+
+```csharp
+protected MarkdownInlineElement InlineElement { get; set; }
+```
+
+#### Property Value
+
+[MarkdownInlineElement](./markdown.markdowninlineelement)<br>
+The markdown inline element.
 
 ## Constructors
 

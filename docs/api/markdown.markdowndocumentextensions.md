@@ -12,7 +12,8 @@ Markdown document extensions.
 public static class MarkdownDocumentExtensions
 ```
 
-Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownDocumentExtensions](./markdown.markdowndocumentextensions)
+Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownDocumentExtensions](./markdown.markdowndocumentextensions)<br>
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute), [NullableAttribute](./system.runtime.compilerservices.nullableattribute), [ExtensionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.extensionattribute)
 
 ## Methods
 

@@ -1,5 +1,3 @@
 {
-  "yaml.format.singleQuote": true,
-  "omnisharp.enableEditorConfigSupport": true,
-  "omnisharp.enableRoslynAnalyzers": true
+  "yaml.format.singleQuote": true
 }

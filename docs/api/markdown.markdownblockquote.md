@@ -13,9 +13,23 @@ public class MarkdownBlockquote : MarkdownTextElement, IMarkdownBlockElement
 ```
 
 Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTextElement](./markdown.markdowntextelement) → [MarkdownBlockquote](./markdown.markdownblockquote)<br>
-Implements [IMarkdownBlockElement](./markdown.imarkdownblockelement)
+Implements [IMarkdownBlockElement](./markdown.imarkdownblockelement)<br>
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute), [NullableAttribute](./system.runtime.compilerservices.nullableattribute)
 
 ## Properties
+
+### **InlineElement**
+
+Gets or sets the markdown inline element.
+
+```csharp
+protected MarkdownInlineElement InlineElement { get; set; }
+```
+
+#### Property Value
+
+[MarkdownInlineElement](./markdown.markdowninlineelement)<br>
+The markdown inline element.
 
 ### **Text**
 

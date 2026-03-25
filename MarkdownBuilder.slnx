@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/.config/">
+    <File Path=".config/dotnet-tools.json" />
+  </Folder>
+  <Folder Name="/sample/">
+    <Project Path="sample/MarkdownBuilder.Sample/MarkdownBuilder.Sample.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+    <File Path="azure-pipelines.yml" />
+    <File Path="GitVersion.yml" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/MarkdownBuilder/MarkdownBuilder.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MarkdownBuiler.UnitTests/MarkdownBuiler.UnitTests.csproj" />
+  </Folder>
+</Solution>

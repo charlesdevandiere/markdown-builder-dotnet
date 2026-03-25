@@ -12,9 +12,23 @@ Markdown text element.
 public abstract class MarkdownTextElement
 ```
 
-Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTextElement](./markdown.markdowntextelement)
+Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTextElement](./markdown.markdowntextelement)<br>
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute), [NullableAttribute](./system.runtime.compilerservices.nullableattribute)
 
 ## Properties
+
+### **InlineElement**
+
+Gets or sets the markdown inline element.
+
+```csharp
+protected MarkdownInlineElement InlineElement { get; set; }
+```
+
+#### Property Value
+
+[MarkdownInlineElement](./markdown.markdowninlineelement)<br>
+The markdown inline element.
 
 ### **Text**
 
@@ -36,7 +50,7 @@ The text or a string that represents the markdown inline element.
 Initializes a new instance of the [MarkdownTextElement](./markdown.markdowntextelement) class.
 
 ```csharp
-public MarkdownTextElement(string text)
+protected MarkdownTextElement(string text)
 ```
 
 #### Parameters
@@ -49,7 +63,7 @@ The text.
 Initializes a new instance of the [MarkdownTextElement](./markdown.markdowntextelement) class.
 
 ```csharp
-public MarkdownTextElement(MarkdownInlineElement inlineElement)
+protected MarkdownTextElement(MarkdownInlineElement inlineElement)
 ```
 
 #### Parameters

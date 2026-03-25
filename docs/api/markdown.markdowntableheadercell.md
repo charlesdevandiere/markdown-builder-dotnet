@@ -12,7 +12,8 @@ Markdown table header cell.
 public class MarkdownTableHeaderCell : MarkdownTextElement
 ```
 
-Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTextElement](./markdown.markdowntextelement) → [MarkdownTableHeaderCell](./markdown.markdowntableheadercell)
+Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTextElement](./markdown.markdowntextelement) → [MarkdownTableHeaderCell](./markdown.markdowntableheadercell)<br>
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute), [NullableAttribute](./system.runtime.compilerservices.nullableattribute)
 
 ## Properties
 
@@ -28,6 +29,19 @@ public MarkdownTableTextAlignment ColumnTextAlignment { get; set; }
 
 [MarkdownTableTextAlignment](./markdown.markdowntabletextalignment)<br>
 The column text alignment.
+
+### **InlineElement**
+
+Gets or sets the markdown inline element.
+
+```csharp
+protected MarkdownInlineElement InlineElement { get; set; }
+```
+
+#### Property Value
+
+[MarkdownInlineElement](./markdown.markdowninlineelement)<br>
+The markdown inline element.
 
 ### **Text**
 

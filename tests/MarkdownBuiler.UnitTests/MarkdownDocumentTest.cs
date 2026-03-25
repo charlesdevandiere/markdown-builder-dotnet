@@ -1,133 +1,131 @@
-using System;
 using Markdown;
 using Xunit;
 
-namespace MarkdownBuiler.UnitTests
+namespace MarkdownBuiler.UnitTests;
+
+public class MarkdownDocumentTest
 {
-    public class MarkdownDocumentTest
+    [Fact]
+    public void TestInitialize()
     {
-        [Fact]
-        public void TestInitialize()
+        Assert.Equal(0, new MarkdownDocument().Length);
+    }
+
+    [Fact]
+    public void TestInitializeWithCapacity()
+    {
+        Assert.Equal(2, new MarkdownDocument(2).Capacity);
+    }
+
+    [Fact]
+    public void TestCapacity()
+    {
+        var document = new MarkdownDocument
         {
-            Assert.Equal(0, new MarkdownDocument().Length);
-        }
+            Capacity = 2
+        };
+        Assert.Equal(2, document.Capacity);
+    }
 
-        [Fact]
-        public void TestInitializeWithCapacity()
-        {
-            Assert.Equal(2, new MarkdownDocument(2).Capacity);
-        }
+    [Fact]
+    public void TestClear()
+    {
+        var document = new MarkdownDocument();
+        document.Append(new MarkdownParagraph(""));
 
-        [Fact]
-        public void TestCapacity()
-        {
-            var document = new MarkdownDocument
-            {
-                Capacity = 2
-            };
-            Assert.Equal(2, document.Capacity);
-        }
+        document.Clear();
 
-        [Fact]
-        public void TestClear()
-        {
-            var document = new MarkdownDocument();
-            document.Append(new MarkdownParagraph(""));
+        Assert.Equal(0, document.Length);
+    }
 
-            document.Clear();
+    [Fact]
+    public void TestAppend()
+    {
+        var document = new MarkdownDocument();
+        var paragraph = new MarkdownParagraph("");
+        document.Append(paragraph);
 
-            Assert.Equal(0, document.Length);
-        }
+        Assert.Equal(1, document.Length);
+        Assert.Equal(paragraph, document.ElementAt(0));
+    }
 
-        [Fact]
-        public void TestAppend()
-        {
-            var document = new MarkdownDocument();
-            var paragraph = new MarkdownParagraph("");
-            document.Append(paragraph);
+    [Fact]
+    public void TestRemoveIndex()
+    {
+        var document = new MarkdownDocument();
+        document.Append(new MarkdownParagraph(""));
 
-            Assert.Equal(1, document.Length);
-            Assert.Equal(paragraph, document.ElementAt(0));
-        }
+        document.Remove(0);
 
-        [Fact]
-        public void TestRemoveIndex()
-        {
-            var document = new MarkdownDocument();
-            document.Append(new MarkdownParagraph(""));
+        Assert.Equal(0, document.Length);
+    }
 
-            document.Remove(0);
+    [Fact]
+    public void TestRemoveElement()
+    {
+        var document = new MarkdownDocument();
+        var paragraph = new MarkdownParagraph("");
+        document.Append(paragraph);
 
-            Assert.Equal(0, document.Length);
-        }
+        document.Remove(paragraph);
 
-        [Fact]
-        public void TestRemoveElement()
-        {
-            var document = new MarkdownDocument();
-            var paragraph = new MarkdownParagraph("");
-            document.Append(paragraph);
+        Assert.Equal(0, document.Length);
+    }
 
-            document.Remove(paragraph);
+    [Fact]
+    public void TestElementAt()
+    {
+        var document = new MarkdownDocument();
+        var paragraph = new MarkdownParagraph("");
+        document.Append(paragraph);
 
-            Assert.Equal(0, document.Length);
-        }
+        Assert.Equal(paragraph, document.ElementAt(0));
+    }
 
-        [Fact]
-        public void TestElementAt()
-        {
-            var document = new MarkdownDocument();
-            var paragraph = new MarkdownParagraph("");
-            document.Append(paragraph);
+    [Fact]
+    public void TestIndexOf()
+    {
+        var document = new MarkdownDocument();
+        var paragraph = new MarkdownParagraph("");
+        document.Append(paragraph);
 
-            Assert.Equal(paragraph, document.ElementAt(0));
-        }
+        Assert.Equal(0, document.IndexOf(paragraph));
+    }
 
-        [Fact]
-        public void TestIndexOf()
-        {
-            var document = new MarkdownDocument();
-            var paragraph = new MarkdownParagraph("");
-            document.Append(paragraph);
+    [Fact]
+    public void TestReplace()
+    {
+        var document = new MarkdownDocument();
+        var paragraph = new MarkdownParagraph("");
+        document.Append(paragraph);
 
-            Assert.Equal(0, document.IndexOf(paragraph));
-        }
+        var code = new MarkdownCode("text", "");
+        document.Replace(paragraph, code);
 
-        [Fact]
-        public void TestReplace()
-        {
-            var document = new MarkdownDocument();
-            var paragraph = new MarkdownParagraph("");
-            document.Append(paragraph);
+        Assert.Equal(code, document.ElementAt(0));
+    }
 
-            var code = new MarkdownCode("text", "");
-            document.Replace(paragraph, code);
+    [Fact]
+    public void TestInsert()
+    {
+        var document = new MarkdownDocument();
+        var paragraph = new MarkdownParagraph("");
+        document.Append(paragraph);
 
-            Assert.Equal(code, document.ElementAt(0));
-        }
+        var code = new MarkdownCode("text", "");
+        document.Insert(0, code);
 
-        [Fact]
-        public void TestInsert()
-        {
-            var document = new MarkdownDocument();
-            var paragraph = new MarkdownParagraph("");
-            document.Append(paragraph);
+        Assert.Equal(code, document.ElementAt(0));
+        Assert.Equal(paragraph, document.ElementAt(1));
+    }
 
-            var code = new MarkdownCode("text", "");
-            document.Insert(0, code);
+    [Fact]
+    public void TestToString()
+    {
+        var document = new MarkdownDocument();
+        document.Append(new MarkdownHeader("Title", 1));
+        document.Append(new MarkdownParagraph("Paragraph"));
 
-            Assert.Equal(code, document.ElementAt(0));
-            Assert.Equal(paragraph, document.ElementAt(1));
-        }
-
-        [Fact]
-        public void TestToString()
-        {
-            var document = new MarkdownDocument();
-            document.Append(new MarkdownHeader("Title", 1));
-            document.Append(new MarkdownParagraph("Paragraph"));
-
-            Assert.Equal("# Title" + Environment.NewLine + Environment.NewLine + "Paragraph" + Environment.NewLine, document.ToString());
-        }
+        Assert.Equal("# Title" + Environment.NewLine + Environment.NewLine + "Paragraph" + Environment.NewLine, document.ToString());
     }
 }

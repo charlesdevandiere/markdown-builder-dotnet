@@ -12,7 +12,8 @@ Markdown table text alignment extensions.
 public static class MarkdownTableTextAlignmentExtensions
 ```
 
-Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTableTextAlignmentExtensions](./markdown.markdowntabletextalignmentextensions)
+Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTableTextAlignmentExtensions](./markdown.markdowntabletextalignmentextensions)<br>
+Attributes [ExtensionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.extensionattribute)
 
 ## Methods
 
