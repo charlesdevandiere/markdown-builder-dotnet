@@ -221,6 +221,17 @@ public static class MarkdownDocumentExtensions
     }
 
     /// <summary>
+    /// Creates a blockquote with the specified block elements and appends this to the document.
+    /// </summary>
+    /// <param name="document">The current document.</param>
+    /// <param name="elements">The block elements contained in the blockquote.</param>
+    /// <returns>A reference to this instance after the append operation has completed.</returns>
+    public static IMarkdownDocument AppendBlockquote(this IMarkdownDocument document, params IMarkdownBlockElement[] elements)
+    {
+        return document.Append(new MarkdownBlockquote(elements));
+    }
+
+    /// <summary>
     /// Creates a table with the specified arguments and appends this to the document.
     /// </summary>
     /// <param name="document">The current document.</param>

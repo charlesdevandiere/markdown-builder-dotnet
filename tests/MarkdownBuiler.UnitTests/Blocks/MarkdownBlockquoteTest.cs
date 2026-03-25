@@ -6,29 +6,106 @@ namespace MarkdownBuiler.UnitTests;
 public class MarkdownBlockquoteTest
 {
     [Fact]
-    public void TestText()
+    public void TestSimpleText()
     {
-        Assert.Equal("Blockquote", new MarkdownBlockquote("Blockquote").Text);
+        var blockquote = new MarkdownBlockquote("Blockquote");
+        Assert.Equal($"> Blockquote{Environment.NewLine}", blockquote.ToString());
     }
 
     [Fact]
     public void TestInlineElement()
     {
         var inlineElement = new MarkdownText("Inline element");
-        Assert.Equal("Inline element", new MarkdownBlockquote(inlineElement).Text);
+        var blockquote = new MarkdownBlockquote(inlineElement);
+        Assert.Equal($"> Inline element{Environment.NewLine}", blockquote.ToString());
     }
 
     [Fact]
-    public void TestToString()
+    public void TestSingleBlockElement()
     {
-        Assert.Equal($"> Blockquote{Environment.NewLine}", new MarkdownBlockquote("Blockquote").ToString());
+        var blockquote = new MarkdownBlockquote(new MarkdownParagraph("Hello world"));
+        Assert.Equal($"> Hello world{Environment.NewLine}", blockquote.ToString());
     }
 
     [Fact]
-    public void TestNullInlineElement()
+    public void TestMultipleBlockElements()
     {
-#pragma warning disable CS8600, CS8625
-        Assert.Throws<ArgumentNullException>(() => new MarkdownBlockquote((MarkdownInlineElement)null));
-#pragma warning restore CS8600, CS8625
+        var blockquote = new MarkdownBlockquote(
+            new MarkdownParagraph("First paragraph"),
+            new MarkdownParagraph("Second paragraph")
+        );
+
+        var expected = string.Join(Environment.NewLine,
+            "> First paragraph",
+            ">",
+            "> Second paragraph",
+            "");
+
+        Assert.Equal(expected, blockquote.ToString());
+    }
+
+    [Fact]
+    public void TestNestedBlockquote()
+    {
+        var blockquote = new MarkdownBlockquote(
+            new MarkdownParagraph("Outer quote"),
+            new MarkdownBlockquote("Inner quote")
+        );
+
+        var expected = string.Join(Environment.NewLine,
+            "> Outer quote",
+            ">",
+            "> > Inner quote",
+            "");
+
+        Assert.Equal(expected, blockquote.ToString());
+    }
+
+    [Fact]
+    public void TestMixedContent()
+    {
+        var blockquote = new MarkdownBlockquote(
+            new MarkdownParagraph("A paragraph"),
+            new MarkdownList("Item 1", "Item 2")
+        );
+
+        var expected = string.Join(Environment.NewLine,
+            "> A paragraph",
+            ">",
+            "> - Item 1",
+            "> - Item 2",
+            "");
+
+        Assert.Equal(expected, blockquote.ToString());
+    }
+
+    [Fact]
+    public void TestBlockElementsListManipulation()
+    {
+        var blockquote = new MarkdownBlockquote(new MarkdownParagraph("First"));
+        blockquote.BlockElements.Add(new MarkdownParagraph("Second"));
+
+        Assert.Equal(2, blockquote.BlockElements.Count);
+
+        var expected = string.Join(Environment.NewLine,
+            "> First",
+            ">",
+            "> Second",
+            "");
+
+        Assert.Equal(expected, blockquote.ToString());
+    }
+
+    [Fact]
+    public void TestEnumerableConstructor()
+    {
+        var elements = new List<IMarkdownBlockElement>
+        {
+            new MarkdownParagraph("One"),
+            new MarkdownParagraph("Two")
+        };
+
+        var blockquote = new MarkdownBlockquote(elements);
+        Assert.Equal(2, blockquote.BlockElements.Count);
     }
 }

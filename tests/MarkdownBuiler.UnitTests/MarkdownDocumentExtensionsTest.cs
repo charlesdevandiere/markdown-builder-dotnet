@@ -167,7 +167,7 @@ public class MarkdownDocumentExtensionsTest
     {
         IMarkdownDocument document = new MarkdownDocument().AppendBlockquote("Text");
         MarkdownBlockquote blockquote = Assert.IsType<MarkdownBlockquote>(document.ElementAt(0));
-        Assert.Equal("Text", blockquote.Text);
+        Assert.Equal($"> Text{Environment.NewLine}", blockquote.ToString());
     }
 
     [Fact]
@@ -175,7 +175,18 @@ public class MarkdownDocumentExtensionsTest
     {
         IMarkdownDocument document = new MarkdownDocument().AppendBlockquote(new MarkdownText("Text"));
         MarkdownBlockquote blockquote = Assert.IsType<MarkdownBlockquote>(document.ElementAt(0));
-        Assert.Equal("Text", blockquote.Text);
+        Assert.Equal($"> Text{Environment.NewLine}", blockquote.ToString());
+    }
+
+    [Fact]
+    public void TestBlockquoteWithBlockElements()
+    {
+        IMarkdownDocument document = new MarkdownDocument().AppendBlockquote(
+            new MarkdownParagraph("First"),
+            new MarkdownParagraph("Second")
+        );
+        MarkdownBlockquote blockquote = Assert.IsType<MarkdownBlockquote>(document.ElementAt(0));
+        Assert.Equal(2, blockquote.BlockElements.Count);
     }
 
     [Fact]
