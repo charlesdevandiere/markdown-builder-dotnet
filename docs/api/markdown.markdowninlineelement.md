@@ -50,7 +50,7 @@ The text or a string that represents the markdown inline element.
 Initializes a new instance of the [MarkdownInlineElement](./markdown.markdowninlineelement) class.
 
 ```csharp
-public MarkdownInlineElement(string text)
+protected MarkdownInlineElement(string text)
 ```
 
 #### Parameters
@@ -63,7 +63,7 @@ The inline element text.
 Initializes a new instance of the [MarkdownInlineElement](./markdown.markdowninlineelement) class.
 
 ```csharp
-public MarkdownInlineElement(MarkdownInlineElement element)
+protected MarkdownInlineElement(MarkdownInlineElement element)
 ```
 
 #### Parameters

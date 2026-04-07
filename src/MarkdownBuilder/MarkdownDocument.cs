@@ -129,4 +129,14 @@ public class MarkdownDocument : IMarkdownDocument
     {
         return string.Join(Environment.NewLine, this.blockElements);
     }
+
+    /// <summary>
+    /// Returns a pretty-printed string with aligned table columns.
+    /// </summary>
+    /// <returns>A pretty-printed string that represents the current markdown document.</returns>
+    public string ToPrettyString()
+    {
+        return string.Join(Environment.NewLine, this.blockElements.Select(element =>
+            element is MarkdownTable table ? table.ToPrettyString() : element.ToString()));
+    }
 }

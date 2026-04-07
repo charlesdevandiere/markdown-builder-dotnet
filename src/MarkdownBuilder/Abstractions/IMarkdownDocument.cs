@@ -63,4 +63,10 @@ public interface IMarkdownDocument
     /// </summary>
     /// <returns>A string that represents the current markdown document.</returns>
     string ToString();
+
+    /// <summary>
+    /// Returns a pretty-printed string with aligned table columns.
+    /// </summary>
+    /// <returns>A pretty-printed string that represents the current markdown document.</returns>
+    string ToPrettyString();
 }

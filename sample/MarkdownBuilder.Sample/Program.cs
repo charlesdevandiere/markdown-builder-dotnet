@@ -85,9 +85,9 @@ document.Append(new MarkdownParagraph(new MarkdownInlineCode("code")));
 document.Append(new MarkdownHeader("Link", 2));
 document.Append(new MarkdownParagraph(new MarkdownLink("markdown-builder-dotnet", "https://github.com/charlesdevandiere/markdown-builder-dotnet")));
 
-Console.Write(document);
+Console.Write(document.ToPrettyString());
 
 string path = Path.Combine(Directory.GetCurrentDirectory(), "document.md");
 using var outputFile = new StreamWriter(path);
 
-outputFile.Write(document);
+outputFile.Write(document.ToPrettyString());

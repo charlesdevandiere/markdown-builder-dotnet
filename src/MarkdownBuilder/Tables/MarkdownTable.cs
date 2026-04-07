@@ -77,10 +77,8 @@ public class MarkdownTable : IMarkdownBlockElement
     /// <param name="capacity">The row capacity.</param>
     public MarkdownTable(MarkdownTableHeader header, int capacity) : this(header)
     {
-        ArgumentValidator.ThrowIfNull(header, nameof(header));
         CheckRowsCapacity(capacity);
 
-        this.Header = header;
         this.Rows = new List<MarkdownTableRow>(capacity);
     }
 
@@ -147,13 +145,77 @@ public class MarkdownTable : IMarkdownBlockElement
     /// <returns>A string that represents the current markdown table.</returns>
     public override string ToString()
     {
-        var sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
         sb.AppendLine(this.Header.ToString());
 
         foreach (MarkdownTableRow row in this.Rows)
         {
             sb.AppendLine(row.ToString());
+        }
+
+        return sb.ToString();
+    }
+
+    /// <summary>
+    /// Returns a pretty-printed string with aligned columns.
+    /// Each column is padded to the width of its widest cell.
+    /// </summary>
+    /// <returns>A pretty-printed string that represents the current markdown table.</returns>
+    public string ToPrettyString()
+    {
+        // Cache trimmed cell values to avoid redundant Trim() calls
+        string[] headerTexts = new string[this.ColumnCount];
+        int[] columnWidths = new int[this.ColumnCount];
+
+        for (int c = 0; c < this.ColumnCount; c++)
+        {
+            headerTexts[c] = this.Header.Cells[c].Text.Trim();
+            // Minimum width of 3 to fit alignment markers (:--,:-:,--:)
+            columnWidths[c] = Math.Max(headerTexts[c].Length, 3);
+        }
+
+        string[][] rowTexts = new string[this.Rows.Count][];
+        for (int r = 0; r < this.Rows.Count; r++)
+        {
+            rowTexts[r] = new string[this.ColumnCount];
+            for (int c = 0; c < this.ColumnCount; c++)
+            {
+                rowTexts[r][c] = this.Rows[r].Cells[c].ToString().Trim();
+                if (rowTexts[r][c].Length > columnWidths[c])
+                {
+                    columnWidths[c] = rowTexts[r][c].Length;
+                }
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int c = 0; c < this.ColumnCount; c++)
+        {
+            sb.Append("| ");
+            sb.Append(headerTexts[c].PadRight(columnWidths[c]));
+            sb.Append(' ');
+        }
+        sb.AppendLine("|");
+
+        for (int c = 0; c < this.ColumnCount; c++)
+        {
+            sb.Append("| ");
+            sb.Append(this.Header.Cells[c].ColumnTextAlignment.Print(columnWidths[c]));
+            sb.Append(' ');
+        }
+        sb.AppendLine("|");
+
+        for (int r = 0; r < rowTexts.Length; r++)
+        {
+            for (int c = 0; c < this.ColumnCount; c++)
+            {
+                sb.Append("| ");
+                sb.Append(rowTexts[r][c].PadRight(columnWidths[c]));
+                sb.Append(' ');
+            }
+            sb.AppendLine("|");
         }
 
         return sb.ToString();

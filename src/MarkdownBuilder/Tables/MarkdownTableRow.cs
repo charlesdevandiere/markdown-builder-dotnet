@@ -70,6 +70,6 @@ public class MarkdownTableRow
     /// <returns>A string that represents the current markdown table row.</returns>
     public override string ToString()
     {
-        return $"{string.Concat(this.Cells.Select(c => $"| {c} "))}|";
+        return $"{string.Concat(this.Cells.Select(c => $"| {c.ToString().Trim()} "))}|";
     }
 }

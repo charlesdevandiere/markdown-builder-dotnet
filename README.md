@@ -2,7 +2,7 @@
 
 ![logo](https://raw.githubusercontent.com/charlesdevandiere/markdown-builder-dotnet/master/logo.png)
 
-Markdown builder for .NET Core.
+Markdown builder for .NET.
 
 [![Build Status](https://dev.azure.com/charlesdevandiere/charlesdevandiere/_apis/build/status/charlesdevandiere.markdown-builder-dotnet?branchName=master)](https://dev.azure.com/charlesdevandiere/charlesdevandiere/_build/latest?definitionId=4&branchName=master)
 ![Coverage](https://img.shields.io/azure-devops/coverage/charlesdevandiere/charlesdevandiere/4/master)
@@ -37,7 +37,3 @@ Console.Write(document);
 //
 // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 ```
-
-## Dependencies
-
-- [Dawn.Guard](https://www.nuget.org/packages/Dawn.Guard/) (>= 1.11.0)

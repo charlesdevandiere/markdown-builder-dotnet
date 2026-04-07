@@ -128,4 +128,33 @@ public class MarkdownDocumentTest
 
         Assert.Equal("# Title" + Environment.NewLine + Environment.NewLine + "Paragraph" + Environment.NewLine, document.ToString());
     }
+
+    [Fact]
+    public void TestToPrettyString()
+    {
+        var document = new MarkdownDocument();
+        document.Append(new MarkdownHeader("Title", 1));
+        document.Append(new MarkdownTable(
+            new MarkdownTableHeader(
+                new MarkdownTableHeaderCell("Name"),
+                new MarkdownTableHeaderCell("Age")
+            ),
+            new MarkdownTableRow[]
+            {
+                new MarkdownTableRow("Alexandria", "5")
+            }
+        ));
+        document.Append(new MarkdownParagraph("End"));
+
+        string expected =
+            "# Title" + Environment.NewLine +
+            Environment.NewLine +
+            "| Name       | Age |" + Environment.NewLine +
+            "| ---------- | --- |" + Environment.NewLine +
+            "| Alexandria | 5   |" + Environment.NewLine +
+            Environment.NewLine +
+            "End" + Environment.NewLine;
+
+        Assert.Equal(expected, document.ToPrettyString());
+    }
 }

@@ -42,7 +42,7 @@ public class MarkdownTableHeader
 
         foreach (MarkdownTableHeaderCell cell in this.Cells)
         {
-            headerTexts.Append($"| {cell.Text} ");
+            headerTexts.Append($"| {cell.Text.Trim()} ");
             columnAlignments.Append($"| {cell.ColumnTextAlignment.Print()} ");
         }
 

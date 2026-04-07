@@ -434,6 +434,27 @@ The blockquote text.
 [IMarkdownDocument](./markdown.imarkdowndocument)<br>
 A reference to this instance after the append operation has completed.
 
+### **AppendBlockquote(IMarkdownDocument, IMarkdownBlockElement[])**
+
+Creates a blockquote with the specified block elements and appends this to the document.
+
+```csharp
+public static IMarkdownDocument AppendBlockquote(IMarkdownDocument document, IMarkdownBlockElement[] elements)
+```
+
+#### Parameters
+
+`document` [IMarkdownDocument](./markdown.imarkdowndocument)<br>
+The current document.
+
+`elements` [IMarkdownBlockElement[]](./markdown.imarkdownblockelement)<br>
+The block elements contained in the blockquote.
+
+#### Returns
+
+[IMarkdownDocument](./markdown.imarkdowndocument)<br>
+A reference to this instance after the append operation has completed.
+
 ### **AppendTable(IMarkdownDocument, MarkdownTableHeader, IEnumerable&lt;MarkdownTableRow&gt;)**
 
 Creates a table with the specified arguments and appends this to the document.
@@ -457,6 +478,24 @@ The rows.
 
 [IMarkdownDocument](./markdown.imarkdowndocument)<br>
 A reference to this instance after the append operation has completed.
+
+### **AppendLineBreak(MarkdownText)**
+
+Appends a line break to the specified markdown text.
+
+```csharp
+public static MarkdownText AppendLineBreak(MarkdownText text)
+```
+
+#### Parameters
+
+`text` [MarkdownText](./markdown.markdowntext)<br>
+The current markdown text.
+
+#### Returns
+
+[MarkdownText](./markdown.markdowntext)<br>
+The markdown text with the line break appended.
 
 ---
 

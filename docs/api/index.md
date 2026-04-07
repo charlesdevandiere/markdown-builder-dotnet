@@ -32,6 +32,8 @@
 
 [MarkdownInlineElement](./markdown.markdowninlineelement)
 
+[MarkdownLineBreak](./markdown.markdownlinebreak)
+
 [MarkdownLink](./markdown.markdownlink)
 
 [MarkdownList](./markdown.markdownlist)

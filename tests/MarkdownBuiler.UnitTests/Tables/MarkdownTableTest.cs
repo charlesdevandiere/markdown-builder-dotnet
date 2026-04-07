@@ -195,4 +195,73 @@ public class MarkdownTableTest
         Assert.Throws<ArgumentNullException>(() => table.AddRow(null));
 #pragma warning restore CS8600, CS8625
     }
+
+    [Fact]
+    public void TestToPrettyString()
+    {
+        var table = new MarkdownTable(
+            new MarkdownTableHeader(
+                new MarkdownTableHeaderCell("Name"),
+                new MarkdownTableHeaderCell("Age")
+            ),
+            new MarkdownTableRow[]
+            {
+                new MarkdownTableRow("Alexandria", "5"),
+                new MarkdownTableRow("John", "30")
+            }
+        );
+
+        string expected =
+            "| Name       | Age |" + Environment.NewLine +
+            "| ---------- | --- |" + Environment.NewLine +
+            "| Alexandria | 5   |" + Environment.NewLine +
+            "| John       | 30  |" + Environment.NewLine;
+
+        Assert.Equal(expected, table.ToPrettyString());
+    }
+
+    [Fact]
+    public void TestToPrettyStringWithAlignment()
+    {
+        var table = new MarkdownTable(
+            new MarkdownTableHeader(
+                new MarkdownTableHeaderCell("Left", MarkdownTableTextAlignment.Left),
+                new MarkdownTableHeaderCell("Center", MarkdownTableTextAlignment.Center),
+                new MarkdownTableHeaderCell("Right", MarkdownTableTextAlignment.Right)
+            ),
+            new MarkdownTableRow[]
+            {
+                new MarkdownTableRow("A", "B", "C")
+            }
+        );
+
+        string expected =
+            "| Left | Center | Right |" + Environment.NewLine +
+            "| :--- | :----: | ----: |" + Environment.NewLine +
+            "| A    | B      | C     |" + Environment.NewLine;
+
+        Assert.Equal(expected, table.ToPrettyString());
+    }
+
+    [Fact]
+    public void TestToPrettyStringMinimumWidth()
+    {
+        var table = new MarkdownTable(
+            new MarkdownTableHeader(
+                new MarkdownTableHeaderCell("A"),
+                new MarkdownTableHeaderCell("B")
+            ),
+            new MarkdownTableRow[]
+            {
+                new MarkdownTableRow("X", "Y")
+            }
+        );
+
+        string expected =
+            "| A   | B   |" + Environment.NewLine +
+            "| --- | --- |" + Environment.NewLine +
+            "| X   | Y   |" + Environment.NewLine;
+
+        Assert.Equal(expected, table.ToPrettyString());
+    }
 }

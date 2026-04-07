@@ -227,6 +227,19 @@ public string ToString()
 [String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
 A string that represents the current markdown document.
 
+### **ToPrettyString()**
+
+Returns a pretty-printed string with aligned table columns.
+
+```csharp
+public string ToPrettyString()
+```
+
+#### Returns
+
+[String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
+A pretty-printed string that represents the current markdown document.
+
 ---
 
 [`< Back`](./)
