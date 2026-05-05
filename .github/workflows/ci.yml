@@ -16,18 +16,18 @@ jobs:
       semVer: ${{ steps.gitversion.outputs.semVer }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Setup GitVersion
-        uses: gittools/actions/gitversion/setup@v3
+        uses: gittools/actions/gitversion/setup@v4
         with:
           versionSpec: '6.x'
 
       - name: Determine version
         id: gitversion
-        uses: gittools/actions/gitversion/execute@v3
+        uses: gittools/actions/gitversion/execute@v4
 
       - name: dotnet tool restore
         run: dotnet tool restore
@@ -39,7 +39,7 @@ jobs:
         run: dotnet tool run reportgenerator -reports:**/coverage.cobertura.xml -targetdir:tests/coverage -reportTypes:Cobertura
 
       - name: Upload coverage
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: coverage
           path: tests/coverage/
@@ -49,7 +49,7 @@ jobs:
 
       - name: Upload package
         if: github.event_name != 'pull_request'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: out
           path: out/
@@ -62,7 +62,7 @@ jobs:
 
     steps:
       - name: Download package
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: out
           path: out/
