@@ -48,7 +48,6 @@ jobs:
         run: dotnet pack ./src/MarkdownBuilder/MarkdownBuilder.csproj -c Release -o out -p:Version=${{ steps.gitversion.outputs.semVer }} --include-symbols
 
       - name: Upload package
-        if: github.event_name != 'pull_request'
         uses: actions/upload-artifact@v7
         with:
           name: out
