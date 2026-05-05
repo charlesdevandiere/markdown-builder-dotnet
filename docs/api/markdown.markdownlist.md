@@ -13,7 +13,8 @@ public class MarkdownList : IMarkdownListItem, IMarkdownBlockElement
 ```
 
 Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownList](./markdown.markdownlist)<br>
-Implements [IMarkdownListItem](./markdown.imarkdownlistitem), [IMarkdownBlockElement](./markdown.imarkdownblockelement)
+Implements [IMarkdownListItem](./markdown.imarkdownlistitem), [IMarkdownBlockElement](./markdown.imarkdownblockelement)<br>
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute), [NullableAttribute](./system.runtime.compilerservices.nullableattribute)
 
 ## Properties
 

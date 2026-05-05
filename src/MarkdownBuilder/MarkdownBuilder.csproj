@@ -1,19 +1,46 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Version>0.0.0</Version>
-    <Authors>Charles de Vandière</Authors>
-    <Description>Markdown builder for .NET Core.</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/charlesdevandiere/markdown-builder-dotnet</RepositoryUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/charlesdevandiere/markdown-builder-dotnet/master/logo.png</PackageIconUrl>
+    <RootNamespace>Markdown</RootNamespace>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    
+    <Authors>Charles de Vandière</Authors>
+    <Copyright>© 2026 Charles de Vandière</Copyright>
+    <Product>MarkdownBuilder</Product>
+    <Title>MarkdownBuilder</Title>
+    <Description>Markdown builder for .NET.</Description>
+    <Summary>A tool to build a Markdown document with C#.</Summary>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/charlesdevandiere/markdown-builder-dotnet/master/logo.png</PackageIconUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://charlesdevandiere.github.io/markdown-builder-dotnet</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>markdown</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/charlesdevandiere/markdown-builder-dotnet</RepositoryUrl>
+    
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dawn.Guard" Version="1.11.0" />
+    <None Include="..\..\logo.png" Pack="true" PackagePath="/"/>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="LICENSE" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="/" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.201" PrivateAssets="All"/>
+  </ItemGroup>
 </Project>

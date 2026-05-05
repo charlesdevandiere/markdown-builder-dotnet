@@ -13,7 +13,8 @@ public class MarkdownTable : IMarkdownBlockElement
 ```
 
 Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownTable](./markdown.markdowntable)<br>
-Implements [IMarkdownBlockElement](./markdown.imarkdownblockelement)
+Implements [IMarkdownBlockElement](./markdown.imarkdownblockelement)<br>
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute), [NullableAttribute](./system.runtime.compilerservices.nullableattribute)
 
 ## Properties
 
@@ -185,6 +186,20 @@ public string ToString()
 
 [String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
 A string that represents the current markdown table.
+
+### **ToPrettyString()**
+
+Returns a pretty-printed string with aligned columns.
+ Each column is padded to the width of its widest cell.
+
+```csharp
+public string ToPrettyString()
+```
+
+#### Returns
+
+[String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
+A pretty-printed string that represents the current markdown table.
 
 ---
 

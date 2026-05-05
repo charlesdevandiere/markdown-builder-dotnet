@@ -1,15 +1,15 @@
-{
+﻿{
   "version": 1,
   "isRoot": true,
   "tools": {
     "xmldoc2markdown": {
-      "version": "2.1.0",
+      "version": "5.0.0",
       "commands": [
         "xmldoc2md"
       ]
     },
     "dotnet-reportgenerator-globaltool": {
-      "version": "4.3.6",
+      "version": "5.5.4",
       "commands": [
         "reportgenerator"
       ]

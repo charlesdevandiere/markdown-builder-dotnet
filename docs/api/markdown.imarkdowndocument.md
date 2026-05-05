@@ -12,6 +12,8 @@ Markdown document.
 public interface IMarkdownDocument
 ```
 
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute)
+
 ## Properties
 
 ### **Capacity**
@@ -159,12 +161,12 @@ IMarkdownDocument Replace(IMarkdownBlockElement oldBlockElement, IMarkdownBlockE
 The block element to replace.
 
 `newBlockElement` [IMarkdownBlockElement](./markdown.imarkdownblockelement)<br>
-The block element that replaces oldBlockElement.
+The block element that replaces `oldBlockElement`.
 
 #### Returns
 
 [IMarkdownDocument](./markdown.imarkdowndocument)<br>
-A reference to this instance with all instances of oldBlockElement replaced by newBlockElement.
+A reference to this instance with all instances of `oldBlockElement` replaced by `newBlockElement`.
 
 ### **Insert(Int32, IMarkdownBlockElement)**
 
@@ -199,6 +201,19 @@ string ToString()
 
 [String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
 A string that represents the current markdown document.
+
+### **ToPrettyString()**
+
+Returns a pretty-printed string with aligned table columns.
+
+```csharp
+string ToPrettyString()
+```
+
+#### Returns
+
+[String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
+A pretty-printed string that represents the current markdown document.
 
 ---
 

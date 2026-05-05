@@ -12,6 +12,8 @@ Markdown block element interface.
 public interface IMarkdownBlockElement
 ```
 
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute)
+
 ## Methods
 
 ### **ToString()**

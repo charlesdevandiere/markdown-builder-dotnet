@@ -4,8 +4,7 @@
 
 Markdown builder for .NET Core.
 
-[![Build Status](https://dev.azure.com/charlesdevandiere/charlesdevandiere/_apis/build/status/charlesdevandiere.markdown-builder-dotnet?branchName=master)](https://dev.azure.com/charlesdevandiere/charlesdevandiere/_build/latest?definitionId=4&branchName=master)
-![Coverage](https://img.shields.io/azure-devops/coverage/charlesdevandiere/charlesdevandiere/4/master)
+[![Build Status](https://github.com/charlesdevandiere/markdown-builder-dotnet/actions/workflows/ci.yml/badge.svg)](https://github.com/charlesdevandiere/markdown-builder-dotnet/actions/workflows/ci.yml)
 [![Nuget](https://img.shields.io/nuget/v/MarkdownBuilder.svg?color=blue&logo=nuget)](https://www.nuget.org/packages/MarkdownBuilder)
 [![Downloads](https://img.shields.io/nuget/dt/MarkdownBuilder.svg?logo=nuget)](https://www.nuget.org/packages/MarkdownBuilder)
 
@@ -84,6 +83,14 @@ new MarkdownStrikethrough("strikethrough");
 // ~~strikethrough~~
 ```
 
+### Line Breaks
+
+```csharp
+new MarkdownText("Line 1").AppendLineBreak().Append("Line 2");
+// Line 1<br>
+// Line 2
+```
+
 ### Lists
 
 ```csharp
@@ -107,6 +114,24 @@ new MarkdownList(
 );
 // - [x] Done
 // - [ ] To do
+//
+```
+
+Nested lists:
+
+```csharp
+new MarkdownList(
+    new MarkdownTextListItem("First item"),
+    new MarkdownTextListItem("Second item"),
+    new MarkdownList(
+        new MarkdownTextListItem("Sub item 1"),
+        new MarkdownTextListItem("Sub item 2")
+    )
+);
+// - First item
+// - Second item
+//   - Sub item 1
+//   - Sub item 2
 //
 ```
 
@@ -166,11 +191,50 @@ new MarkdownTable(
 //
 ```
 
+Pretty-printed table with aligned columns:
+
+```csharp
+var table = new MarkdownTable(
+    new MarkdownTableHeader(
+        new MarkdownTableHeaderCell("Name"),
+        new MarkdownTableHeaderCell("Age", MarkdownTableTextAlignment.Right)
+    ),
+    new MarkdownTableRow[]
+    {
+        new MarkdownTableRow("John", "27"),
+        new MarkdownTableRow("Xavier", "42")
+    }
+);
+table.ToPrettyString();
+// | Name   | Age |
+// | ------ | --: |
+// | John   |  27 |
+// | Xavier |  42 |
+//
+```
+
 ### Blockquotes
 
 ```csharp
 new MarkdownBlockquote("Lorem ipsum ...");
 // > Lorem ipsum ...
+//
+```
+
+Nested blockquotes with block elements:
+
+```csharp
+new MarkdownBlockquote(
+    new MarkdownParagraph("A paragraph"),
+    new MarkdownList("Item 1", "Item 2"),
+    new MarkdownBlockquote("Nested quote")
+);
+// > A paragraph
+// >
+// > - Item 1
+// > - Item 2
+// >
+// > > Nested quote
 //
 ```
 
@@ -208,6 +272,8 @@ Console.Write(document);
 // Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 ```
 
-## Dependencies
+Use `ToPrettyString()` to render the document with aligned table columns:
 
-- [Dawn.Guard](https://www.nuget.org/packages/Dawn.Guard/) (>= 1.11.0)
+```csharp
+Console.Write(document.ToPrettyString());
+```

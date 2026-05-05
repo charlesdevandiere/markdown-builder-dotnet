@@ -13,7 +13,8 @@ public class MarkdownDocument : IMarkdownDocument
 ```
 
 Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [MarkdownDocument](./markdown.markdowndocument)<br>
-Implements [IMarkdownDocument](./markdown.imarkdowndocument)
+Implements [IMarkdownDocument](./markdown.imarkdowndocument)<br>
+Attributes [NullableContextAttribute](./system.runtime.compilerservices.nullablecontextattribute), [NullableAttribute](./system.runtime.compilerservices.nullableattribute)
 
 ## Properties
 
@@ -206,12 +207,12 @@ public IMarkdownDocument Replace(IMarkdownBlockElement oldBlockElement, IMarkdow
 The block element to replace.
 
 `newBlockElement` [IMarkdownBlockElement](./markdown.imarkdownblockelement)<br>
-The block element that replaces oldBlockElement.
+The block element that replaces `oldBlockElement`.
 
 #### Returns
 
 [IMarkdownDocument](./markdown.imarkdowndocument)<br>
-A reference to this instance with all instances of oldBlockElement replaced by newBlockElement.
+A reference to this instance with all instances of `oldBlockElement` replaced by `newBlockElement`.
 
 ### **ToString()**
 
@@ -225,6 +226,19 @@ public string ToString()
 
 [String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
 A string that represents the current markdown document.
+
+### **ToPrettyString()**
+
+Returns a pretty-printed string with aligned table columns.
+
+```csharp
+public string ToPrettyString()
+```
+
+#### Returns
+
+[String](https://docs.microsoft.com/en-us/dotnet/api/system.string)<br>
+A pretty-printed string that represents the current markdown document.
 
 ---
 

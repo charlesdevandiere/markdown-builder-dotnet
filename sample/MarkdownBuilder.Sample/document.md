@@ -24,10 +24,10 @@ Text
 
 ## Table
 
-| Name | Age |
-| --- | --: |
-| John | 27 |
-| Xavier | 42 |
+| Name   | Age |
+| ------ | --: |
+| John   | 27  |
+| Xavier | 42  |
 
 ## Code
 
