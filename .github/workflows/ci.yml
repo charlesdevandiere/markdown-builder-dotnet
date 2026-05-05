@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      semVer: ${{ steps.gitversion.outputs.semVer }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup GitVersion
+        uses: gittools/actions/gitversion/setup@v3
+        with:
+          versionSpec: '6.x'
+
+      - name: Determine version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v3
+
+      - name: dotnet tool restore
+        run: dotnet tool restore
+
+      - name: dotnet test
+        run: dotnet test -c Release --logger xunit -p:CollectCoverage=true -p:CoverletOutputFormat=cobertura
+
+      - name: Generate coverage report
+        run: dotnet tool run reportgenerator -reports:**/coverage.cobertura.xml -targetdir:tests/coverage -reportTypes:Cobertura
+
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: tests/coverage/
+
+      - name: dotnet pack
+        run: dotnet pack ./src/MarkdownBuilder/MarkdownBuilder.csproj -c Release -o out -p:Version=${{ steps.gitversion.outputs.semVer }} --include-symbols
+
+      - name: Upload package
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: out
+          path: out/
+
+  publish:
+    needs: build
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment: release
+
+    steps:
+      - name: Download package
+        uses: actions/download-artifact@v4
+        with:
+          name: out
+          path: out/
+
+      - name: Push to NuGet
+        run: dotnet nuget push out/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.build.outputs.semVer }}
+        run: |
+          gh release create "v$VERSION" out/*.nupkg \
+            --title "v$VERSION" \
+            --generate-notes

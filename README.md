@@ -4,8 +4,7 @@
 
 Markdown builder for .NET.
 
-[![Build Status](https://dev.azure.com/charlesdevandiere/charlesdevandiere/_apis/build/status/charlesdevandiere.markdown-builder-dotnet?branchName=master)](https://dev.azure.com/charlesdevandiere/charlesdevandiere/_build/latest?definitionId=4&branchName=master)
-![Coverage](https://img.shields.io/azure-devops/coverage/charlesdevandiere/charlesdevandiere/4/master)
+[![Build Status](https://github.com/charlesdevandiere/markdown-builder-dotnet/actions/workflows/ci.yml/badge.svg)](https://github.com/charlesdevandiere/markdown-builder-dotnet/actions/workflows/ci.yml)
 [![Nuget](https://img.shields.io/nuget/v/MarkdownBuilder.svg?color=blue&logo=nuget)](https://www.nuget.org/packages/MarkdownBuilder)
 [![Downloads](https://img.shields.io/nuget/dt/MarkdownBuilder.svg?logo=nuget)](https://www.nuget.org/packages/MarkdownBuilder)
 
