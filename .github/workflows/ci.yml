@@ -56,7 +56,6 @@ jobs:
 
   publish:
     needs: build
-    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment: release
 
@@ -75,6 +74,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ needs.build.outputs.semVer }}
         run: |
-          gh release create "v$VERSION" out/*.nupkg \
-            --title "v$VERSION" \
-            --generate-notes
+          FLAGS="--title v$VERSION --generate-notes"
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            FLAGS="$FLAGS --prerelease"
+          fi
+          gh release create "v$VERSION" out/*.nupkg $FLAGS
