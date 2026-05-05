@@ -30,6 +30,17 @@ jobs:
         id: gitversion
         uses: gittools/actions/gitversion/execute@v4
 
+      - name: Update run name with version
+        uses: actions/github-script@v9
+        with:
+          script: |
+            github.rest.actions.updateWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.runId,
+              name: `Build ${{ steps.gitversion.outputs.semVer }}`
+            })
+
       - name: dotnet tool restore
         run: dotnet tool restore
 
