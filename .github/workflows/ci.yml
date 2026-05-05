@@ -1,4 +1,5 @@
 name: CI
+run-name: Build ${{ github.run_number }} - ${{ github.ref_name }}
 
 on:
   push:
